@@ -18,7 +18,7 @@ class AnggotaController extends Controller
         return view('anggota.dataanggota', compact('data'));
     }
     public function tambahdata(){ 
-        // $angkatan = Angkatan::all();
+        $angkatan = Angkatan::all();
         return view('dataanggota', compact('angkatan'));
     }
     public function tambah(Request $request){
