@@ -95,7 +95,7 @@
               <p>"Lingkungan Harmonis! Nikmati Hidup Damai dan Aman di Perumahan Ini"</p>
               
               <div class="btn-box">
-                <a href="/data" class="">
+                <a href="/datatable" class="">
                   Information
                 </a>
               </div>

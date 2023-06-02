@@ -1,17 +1,23 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BarangController;
-use App\Http\Controllers\DatauserController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\AnggotaController;
-use App\Http\Controllers\AngkatanController;
-use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AcaraController;
-use App\Http\Controllers\ArtikelController;
-use App\Http\Controllers\JadwalSharingController;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\Jakarta\JakpusController;
+use App\Http\Controllers\Depok\DepokController;
+use App\Http\Controllers\Tangerang\TangerangController;
+use App\Http\Controllers\Serang\SerangController;
+use App\Http\Controllers\Bogor\BogorController;
+use App\Http\Controllers\Bekasi\BekasiController;
+use App\Http\Controllers\Ponorogo\PonorogoController;
+use App\Http\Controllers\Sidoarjo\SidoarjoController;
+use App\Http\Controllers\Surabaya\SurabayaController;
+use App\Http\Controllers\Pesawaran\PesawaranController;
+use App\Http\Controllers\Cirebon\CirebonController;
+use App\Http\Controllers\Sukabumi\SukabumiController;
+use App\Http\Controllers\Karawang\KarawangController;
+use App\Http\Controllers\Bandung\BandungController;
 
 
 /*
@@ -32,34 +38,6 @@ Route::get('/index', function () {
     return view('index');
 })->middleware('auth');
  
-//  barang
-Route::get('/barang', [BarangController::class, 'index'])->name('barang');
-Route::post('/add', [BarangController::class, 'add'])->name('add');
-Route::get('/tampildata/{id}', [BarangController::class, 'tampildata'])->name('tampildata');
-Route::post('/update/{id}', [BarangController::class, 'update'])->name('update');
-Route::get('/delete/{id}', [BarangController::class, 'delete'])->name('delete');
-
-// anggota
-Route::get('/dataanggota', [AnggotaController::class, 'index'])->name('dataanggota');
-Route::post('/tambah', [AnggotaController::class, 'tambah'])->name('tambah');
-Route::get('/tampilanggota/{id}', [AnggotaController::class, 'tampilanggota'])->name('tampilanggota');
-Route::post('/updateanggota/{id}', [AnggotaController::class, 'updateanggota'])->name('updateanggota');
-Route::get('/hapus/{id}', [AnggotaController::class, 'hapus'])->name('hapus');
-
-// angkatan
-Route::get('/angkatan', [AngkatanController::class, 'index'])->name('angkatan');
-Route::post('/plus', [AngkatanController::class, 'plus'])->name('plus');
-Route::get('/tampilangkatan/{id}', [AngkatanController::class, 'tampilangkatan'])->name('tampilangkatan');
-Route::post('/updateangkatan/{id}', [AngkatanController::class, 'updateangkatan'])->name('updateangkatan');
-Route::get('/hapusangkatan/{id}', [AngkatanController::class, 'hapusangkatan'])->name('hapusangkatan');
-
-// kategori
-Route::get('/kategori', [CategoryController::class, 'index'])->name('kategori');
-Route::post('/tambahdata', [CategoryController::class, 'tambahdata'])->name('tambahdata');
-Route::get('/tampilkategori/{id}', [CategoryController::class, 'tampilkategori'])->name('tampilkategori');
-Route::post('/updatekategori/{id}', [CategoryController::class, 'updatekategori'])->name('updatekategori');
-Route::get('/hapuskategori/{id}', [CategoryController::class, 'hapuskategori'])->name('hapuskategori');
-
 // Acara
 Route::get('/acara', [AcaraController::class, 'index'])->name('acara');
 Route::post('/tambahacara', [AcaraController::class, 'tambahacara'])->name('tambahacara');
@@ -67,42 +45,68 @@ Route::get('/tampilacara/{id}', [AcaraController::class, 'tampilacara'])->name('
 Route::post('/updateacara/{id}', [AcaraController::class, 'updateacara'])->name('updateacara');
 Route::get('/hapusacara/{id}', [AcaraController::class, 'hapusacara'])->name('hapusacara');
 
-// Artikel
-Route::get('/artikel', [ArtikelController::class, 'index'])->name('artikel');
-Route::post('/tambahartikel', [ArtikelController::class, 'tambahartikel'])->name('tambahartikel');
-Route::get('/tampilartikel/{id}', [ArtikelController::class, 'tampilartikel'])->name('tampilartikel');
-Route::post('/updateartikel/{id}', [ArtikelController::class, 'updateartikel'])->name('updateartikel');
-Route::get('/hapusartikel/{id}', [ArtikelController::class, 'hapusartikel'])->name('hapusartikel');
+// dataTable 
+Route::get('/datatable', [JakpusController::class, 'index'])->name('datatable')->middleware('auth');
+// jakarta 
+Route::get('/datatable-jakpus', [JakpusController::class, 'jakpus'])->name('datatable-jakpus')->middleware('auth');
+Route::get('/datatable-jakut', [JakpusController::class, 'jakut'])->name('datatable-jakut')->middleware('auth');
+Route::get('/datatable-jaktim', [JakpusController::class, 'jaktim'])->name('datatable-jaktim')->middleware('auth');
+Route::get('/datatable-jaksel', [JakpusController::class, 'jaksel'])->name('datatable-jaksel')->middleware('auth');
 
-// jadwal Sharing
-Route::get('/jadwal', [JadwalSharingController::class, 'index'])->name('jadwal');
-Route::post('/tambahjadwal', [JadwalSharingController::class, 'tambahjadwal'])->name('tambahjadwal');
-Route::get('/tampiljadwal/{id}', [JadwalSharingController::class, 'tampiljadwal'])->name('tampiljadwal');
-Route::post('/updatejadwal/{id}', [JadwalSharingController::class, 'updatejadwal'])->name('updatejadwal');
-Route::get('/hapusjadwal/{id}', [JadwalSharingController::class, 'hapusjadwal'])->name('hapusjadwal');
+// jakarta 
+Route::get('/datatable-kotadepok', [DepokController::class, 'index'])->name('datatable-kotadepok')->middleware('auth');
 
-// datauser
-Route::post('/tambahdtuser', [DatauserController::class, 'tambahdtuser'])->name('tambahdtuser');
-Route::get('/tampiluser/{id}', [DatauserController::class, 'tampiluser'])->name('tampiluser');
-Route::post('/updateuser/{id}', [DatauserController::class, 'updateuser'])->name('updateuser');
+// Tangerang 
+Route::get('/datatable-tangerang', [TangerangController::class, 'index'])->name('datatable-tangerang')->middleware('auth');
+Route::get('/datatable-tangsel', [TangerangController::class, 'tangsel'])->name('datatable-tangsel')->middleware('auth');
+Route::get('/datatable-kabtangerang', [TangerangController::class, 'kab'])->name('datatable-kabtangerang')->middleware('auth');
 
-Route::get('/datauser', [LoginController::class, 'user'])->name('datauser');
-Route::get('/hapususer/{id}', [LoginController::class, 'hapususer'])->name('hapususer');
+// serang 
+Route::get('/datatable-serang', [SerangController::class, 'index'])->name('datatable-serang')->middleware('auth');
 
-Route::get('/log', [LoginController::class, 'index'])->name('log');
-Route::post('/loginproses', [LoginController::class, 'loginproses'])->name('loginproses');
+// bogor 
+Route::get('/datatable-bogor', [BogorController::class, 'index'])->name('datatable-bogor')->middleware('auth');
+Route::get('/datatable-kab', [BogorController::class, 'kab'])->name('datatable-kab')->middleware('auth');
 
-Route::post('/tambahuser', [LoginController::class, 'tambahuser'])->name('tambahuser');
-Route::get('/regist', [LoginController::class, 'register'])->name('regist');
-Route::post('/registeruser', [LoginController::class, 'registeruser'])->name('registeruser');
+// bogor 
+Route::get('/datatable-bekasi', [BekasiController::class, 'index'])->name('datatable-bekasi')->middleware('auth');
+Route::get('/datatable-kab', [BekasiController::class, 'kab'])->name('datatable-kab')->middleware('auth');
 
-Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+// ponorogo 
+Route::get('/datatable-ponorogo', [PonorogoController::class, 'index'])->name('datatable-ponorogo')->middleware('auth');
+
+// Sidoarjo 
+Route::get('/datatable-sidoarjo', [SidoarjoController::class, 'index'])->name('datatable-sidoarjo')->middleware('auth');
+
+// surabaya 
+Route::get('/datatable-surabaya', [SurabayaController::class, 'index'])->name('datatable-surabaya')->middleware('auth');
+
+// pesawaran
+Route::get('/datatable-pesawaran', [PesawaranController::class, 'index'])->name('datatable-pesawaran')->middleware('auth');
+
+// cirebon
+Route::get('/datatable-cirebon', [CirebonController::class, 'index'])->name('datatable-cirebon')->middleware('auth');
+
+// sukabumi
+Route::get('/datatable-sukabumi', [SukabumiController::class, 'index'])->name('datatable-sukabumi')->middleware('auth');
+
+// karawang
+Route::get('/datatable-karawang', [KarawangController::class, 'index'])->name('datatable-karawang')->middleware('auth');
+
+// bandung
+Route::get('/datatable-bandung', [BandungController::class, 'index'])->name('datatable-bandung')->middleware('auth');
 
 // frontend
+Route::get('/log', [LoginController::class, 'index'])->name('log');
+Route::post('/loginproses', [LoginController::class, 'loginproses'])->name('loginproses');
+Route::post('/tambahuser', [LoginController::class, 'tambahuser'])->name('tambahuser');
+Route::get('/regist', [LoginController::class, 'register'])->name('regist');
+
 Route::get('/', [FrontController::class, 'index'])->name('index');
 Route::get('/home', [FrontController::class, 'home'])->name('home')->middleware('auth');
 Route::get('/data', [FrontController::class, 'data'])->name('data')->middleware('auth');
 Route::get('/lokasi', [FrontController::class, 'lokasi'])->name('lokasi')->middleware('auth');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // jakarta 
 Route::get('/jakarta', [FrontController::class, 'jakarta'])->name('jakarta')->middleware('auth');
@@ -199,15 +203,6 @@ Route::get('/sidoarjo', function () {
 
 // backend 
 
-
-// Route::get('/anggota',[AnggotaController::class, 'input']);
-// Route::get('/input1',[AnggotaController::class, 'input1']);
-// Route::get('/updateanggota',[AnggotaController::class, 'update']);
-// Route::get('/angkatan',[AngkatanController::class, 'input']);
-// Route::get('/category',[CategoryController::class, 'category']);
-// Route::get('/jadwal',[CategoryController::class, 'jADWAL']);
-// Route::get('/acara',[CategoryController::class, 'acara']);
-// Route::get('/artikel',[CategoryController::class, 'artikel']);
 
 
 
