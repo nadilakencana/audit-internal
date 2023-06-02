@@ -11,19 +11,19 @@
 
                 <li class="dropdown user user-menu" >
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                      <img src="{{ asset('fotokategori/'.Auth::user()->image) }}" class="user-image" alt="User Image" style="height: 40px">
-                      <span class="hidden-xs">{{ Auth::user()->name }}</span>
+                      {{-- <img src="{{ asset('fotokategori/'.Auth::user()->image) }}" class="user-image" alt="User Image" style="height: 40px"> --}}
+                      {{-- <span class="hidden-xs">{{ Auth::user()->name }}</span> --}}
                     </a>
                     <ul class="dropdown-menu" style="background-color: #F44336; color: white;">
                       <!-- User image -->
                       <li class="user-header">
                         <div class="foto">
-                            <img src="{{ asset('fotokategori/'.Auth::user()->image) }}" class="img-circle" alt="User Image" style="height: 40px; margin-left: 60px">
+                            {{-- <img src="{{ asset('fotokategori/'.Auth::user()->image) }}" class="img-circle" alt="User Image" style="height: 40px; margin-left: 60px"> --}}
                         </div>
                         <p class="text-center">
-                          {{ Auth::user()->name }}
+                          {{-- {{ Auth::user()->name }} --}}
                           <br>
-                          <small>{{ Auth::user()->email }}</small>
+                          {{-- <small>{{ Auth::user()->email }}</small> --}}
                         </p>
                       </li>
                       <li class="user-footer">
