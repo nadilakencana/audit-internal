@@ -1,21 +1,5 @@
 @extends('template')
 
-@section('acara')
-    <li class="active">
-        <a href="#" class="menu-toggle">
-            <i class="fa-solid fa-book icon"></i>
-            <span>Acara</span>
-        </a>
-        <ul class="ml-menu">
-            <li class="active">
-                <a href="/acara">
-                    <span>Data Acara</span>
-                </a> 
-            </li>
-        </ul>
-    </li>
-@endsection
-
 @section('content')
 
 <section class="content">

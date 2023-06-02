@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AcaraController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Jakarta\JakpusController;
@@ -18,6 +17,9 @@ use App\Http\Controllers\Cirebon\CirebonController;
 use App\Http\Controllers\Sukabumi\SukabumiController;
 use App\Http\Controllers\Karawang\KarawangController;
 use App\Http\Controllers\Bandung\BandungController;
+use App\Http\Controllers\Jakarta\JaktimController;
+use App\Http\Controllers\Jakarta\JakutController;
+use App\Http\Controllers\Jakarta\JakselController;
 
 
 /*
@@ -38,16 +40,110 @@ Route::get('/index', function () {
     return view('index');
 })->middleware('auth');
  
-// Acara
-// Route::get('/acara', [AcaraController::class, 'index'])->name('acara');
-// Route::post('/tambahacara', [AcaraController::class, 'tambahacara'])->name('tambahacara');
-// Route::get('/tampilacara/{id}', [AcaraController::class, 'tampilacara'])->name('tampilacara');
-// Route::post('/updateacara/{id}', [AcaraController::class, 'updateacara'])->name('updateacara');
-// Route::get('/hapusacara/{id}', [AcaraController::class, 'hapusacara'])->name('hapusacara');
+/*                                              backend                                       */
 
 Route::get('/dashboard-admin', [FrontController::class, 'dashboard'])->name('dashboard-admin');
-Route::get('/jakpus-admin', [JakpusController::class, 'jakpusadmin'])->name('jakpus-admin');
+// jakpus 
+Route::get('/jakpus-admin', [JakpusController::class, 'jakpusadmin'])->name('jakpus-admin')->middleware('auth');
+Route::post('/tambahjakpus', [JakpusController::class, 'tambahjakpus'])->name('tambahjakpus');
+Route::get('/tampiljakpus/{id}', [JakpusController::class, 'tampiljakpus'])->name('tampiljakpus');
+Route::post('/updatejakpus/{id}', [JakpusController::class, 'updatejakpus'])->name('updatejakpus');
+Route::get('/hapusjakpus/{id}', [JakpusController::class, 'hapusjakpus'])->name('hapusjakpus');
 
+// jaktim 
+Route::get('/jaktim-admin', [JaktimController::class, 'jaktimadmin'])->name('jaktim-admin')->middleware('auth');
+Route::post('/tambahjaktim', [JaktimController::class, 'tambahjaktim'])->name('tambahjaktim');
+Route::get('/tampiljaktim/{id}', [JaktimController::class, 'tampiljaktim'])->name('tampiljaktim');
+Route::post('/updatejaktim/{id}', [JaktimController::class, 'updatejaktim'])->name('updatejaktim');
+Route::get('/hapusjaktim/{id}', [JaktimController::class, 'hapusjaktim'])->name('hapusjaktim');
+
+// jakut 
+Route::get('/jakut-admin', [JakutController::class, 'jakutadmin'])->name('jakut-admin')->middleware('auth');
+Route::post('/tambahjakut', [JakutController::class, 'tambahjakut'])->name('tambahjakut');
+Route::get('/tampiljakut/{id}', [JakutController::class, 'tampiljakut'])->name('tampiljakut');
+Route::post('/updatejakut/{id}', [JakutController::class, 'updatejakut'])->name('updatejakut');
+Route::get('/hapusjakut/{id}', [JakutController::class, 'hapusjakut'])->name('hapusjakut');
+
+// jakut 
+Route::get('/jaksel-admin', [JakselController::class, 'jakseladmin'])->name('jaksel-admin')->middleware('auth');
+Route::post('/tambahjaksel', [JakselController::class, 'tambahjaksel'])->name('tambahjaksel');
+Route::get('/tampiljaksel/{id}', [JakselController::class, 'tampiljaksel'])->name('tampiljaksel');
+Route::post('/updatejaksel/{id}', [JakselController::class, 'updatejaksel'])->name('updatejaksel');
+Route::get('/hapusjaksel/{id}', [JakselController::class, 'hapusjaksel'])->name('hapusjaksel');
+
+// depok 
+Route::get('/depok-admin', [DepokController::class, 'depokadmin'])->name('depok-admin')->middleware('auth');
+Route::post('/tambahdepok', [DepokController::class, 'tambahdepok'])->name('tambahdepok');
+Route::get('/tampildepok/{id}', [DepokController::class, 'tampildepok'])->name('tampildepok');
+Route::post('/updatedepok/{id}', [DepokController::class, 'updatedepok'])->name('updatedepok');
+Route::get('/hapusdepok/{id}', [DepokController::class, 'hapusdepok'])->name('hapusdepok');
+
+// serang 
+Route::get('/serang-admin', [SerangController::class, 'serangadmin'])->name('serang-admin')->middleware('auth');
+Route::post('/tambahserang', [SerangController::class, 'tambahserang'])->name('tambahserang');
+Route::get('/tampilserang/{id}', [SerangController::class, 'tampilserang'])->name('tampilserang');
+Route::post('/updateserang/{id}', [SerangController::class, 'updateserang'])->name('updateserang');
+Route::get('/hapusserang/{id}', [SerangController::class, 'hapusserang'])->name('hapusserang');
+
+// ponorogo 
+Route::get('/ponorogo-admin', [PonorogoController::class, 'ponorogoadmin'])->name('ponorogo-admin')->middleware('auth');
+Route::post('/tambahponorogo', [PonorogoController::class, 'tambahponorogo'])->name('tambahponorogo');
+Route::get('/tampilponorogo/{id}', [PonorogoController::class, 'tampilponorogo'])->name('tampilponorogo');
+Route::post('/updateponorogo/{id}', [PonorogoController::class, 'updateponorogo'])->name('updateponorogo');
+Route::get('/hapusponorogo/{id}', [PonorogoController::class, 'hapusponorogo'])->name('hapusponorogo');
+
+// sidoarjo 
+Route::get('/sidoarjo-admin', [SidoarjoController::class, 'sidoarjoadmin'])->name('sidoarjo-admin')->middleware('auth');
+Route::post('/tambahsidoarjo', [SidoarjoController::class, 'tambahsidoarjo'])->name('tambahsidoarjo');
+Route::get('/tampilsidoarjo/{id}', [SidoarjoController::class, 'tampilsidoarjo'])->name('tampilsidoarjo');
+Route::post('/updatesidoarjo/{id}', [SidoarjoController::class, 'updatesidoarjo'])->name('updatesidoarjo');
+Route::get('/hapussidoarjo/{id}', [SidoarjoController::class, 'hapussidoarjo'])->name('hapussidoarjo');
+
+// surabaya 
+Route::get('/surabaya-admin', [SurabayaController::class, 'surabayaadmin'])->name('surabaya-admin')->middleware('auth');
+Route::post('/tambahsurabaya', [SurabayaController::class, 'tambahsurabaya'])->name('tambahsurabaya');
+Route::get('/tampilsurabaya/{id}', [SurabayaController::class, 'tampilsurabaya'])->name('tampilsurabaya');
+Route::post('/updatesurabaya/{id}', [SurabayaController::class, 'updatesurabaya'])->name('updatesurabaya');
+Route::get('/hapussurabaya/{id}', [SurabayaController::class, 'hapussurabaya'])->name('hapussurabaya');
+
+// pesawaran 
+Route::get('/pesawaran-admin', [PesawaranController::class, 'pesawaranadmin'])->name('pesawaran-admin')->middleware('auth');
+Route::post('/tambahpesawaran', [PesawaranController::class, 'tambahpesawaran'])->name('tambahpesawaran');
+Route::get('/tampilpesawaran/{id}', [PesawaranController::class, 'tampilpesawaran'])->name('tampilpesawaran');
+Route::post('/updatepesawaran/{id}', [PesawaranController::class, 'updatepesawaran'])->name('updatepesawaran');
+Route::get('/hapuspesawaran/{id}', [PesawaranController::class, 'hapuspesawaran'])->name('hapuspesawaran');
+
+// cirebon 
+Route::get('/cirebon-admin', [CirebonController::class, 'cirebonadmin'])->name('cirebon-admin')->middleware('auth');
+Route::post('/tambahcirebon', [CirebonController::class, 'tambahcirebon'])->name('tambahcirebon');
+Route::get('/tampilcirebon/{id}', [CirebonController::class, 'tampilcirebon'])->name('tampilcirebon');
+Route::post('/updatecirebon/{id}', [CirebonController::class, 'updatecirebon'])->name('updatecirebon');
+Route::get('/hapuscirebon/{id}', [CirebonController::class, 'hapuscirebon'])->name('hapuscirebon');
+
+// sukabumi 
+Route::get('/sukabumi-admin', [SukabumiController::class, 'sukabumiadmin'])->name('sukabumi-admin')->middleware('auth');
+Route::post('/tambahsukabumi', [SukabumiController::class, 'tambahsukabumi'])->name('tambahsukabumi');
+Route::get('/tampilsukabumi/{id}', [SukabumiController::class, 'tampilsukabumi'])->name('tampilsukabumi');
+Route::post('/updatesukabumi/{id}', [SukabumiController::class, 'updatesukabumi'])->name('updatesukabumi');
+Route::get('/hapussukabumi/{id}', [SukabumiController::class, 'hapussukabumi'])->name('hapussukabumi');
+
+// karawang 
+Route::get('/karawang-admin', [KarawangController::class, 'karawangadmin'])->name('karawang-admin')->middleware('auth');
+Route::post('/tambahkarawang', [KarawangController::class, 'tambahkarawang'])->name('tambahkarawang');
+Route::get('/tampilkarawang/{id}', [KarawangController::class, 'tampilkarawang'])->name('tampilkarawang');
+Route::post('/updatekarawang/{id}', [KarawangController::class, 'updatekarawang'])->name('updatekarawang');
+Route::get('/hapuskarawang/{id}', [KarawangController::class, 'hapuskarawang'])->name('hapuskarawang');
+
+// bandung 
+Route::get('/bandung-admin', [BandungController::class, 'bandungadmin'])->name('bandung-admin')->middleware('auth');
+Route::post('/tambahbandung', [BandungController::class, 'tambahbandung'])->name('tambahbandung');
+Route::get('/tampilbandung/{id}', [BandungController::class, 'tampilbandung'])->name('tampilbandung');
+Route::post('/updatebandung/{id}', [BandungController::class, 'updatebandung'])->name('updatebandung');
+Route::get('/hapusbandung/{id}', [BandungController::class, 'hapusbandung'])->name('hapusbandung');
+
+/*                                            emd backend                                       */
+
+/*                                            Frontend                                       */
 // dataTable 
 Route::get('/datatable', [JakpusController::class, 'index'])->name('datatable')->middleware('auth');
 // jakarta 

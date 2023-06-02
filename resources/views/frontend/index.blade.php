@@ -74,7 +74,7 @@
               <p>"Lingkungan Harmonis! Nikmati Hidup Damai dan Aman di Perumahan Ini"</p>
               @if (Auth::check())
               <div class="btn-box">
-                <a href="/data" class="">
+                <a href="/datatable" class="">
                   Information
                 </a>
               </div>
@@ -376,8 +376,6 @@
     }
   </script>
   
-  <button onclick="checkLogin()">Klik Disini</button>
-
 </body>
 
 </html>

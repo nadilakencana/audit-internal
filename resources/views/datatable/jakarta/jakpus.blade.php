@@ -131,6 +131,7 @@
                 <td align="center" valign=middle><font face="Times New Roman" color="#000000"><br></font></td>
                 <td align="center" valign=middle><font face="Times New Roman" color="#000000"><br></font></td>
             </tr>
+           
             <tr>
                 <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="21" align="center" valign=middle bgcolor="#D9D2E9"><b><font face="Times New Roman" size=3 color="#000000">Ket</font></b></td>
                 <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle bgcolor="#D9D2E9"><b><font face="Times New Roman" size=3 color="#000000">Jenis Property</font></b></td>
@@ -140,30 +141,24 @@
                 <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle bgcolor="#D9D2E9"><b><font face="Times New Roman" size=3 color="#000000">Sertifikat</font></b></td>
                 <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle bgcolor="#D9D2E9"><b><font face="Times New Roman" size=3 color="#000000">Harga</font></b></td>
                 <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle bgcolor="#D9D2E9"><b><font face="Times New Roman" size=3 color="#000000">Link Foto</font></b></td>
+                <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle bgcolor="#D9D2E9"><b><font face="Times New Roman" size=3 color="#000000">Link maps</font></b></td>
                 <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle bgcolor="#D9D2E9"><b><font face="Times New Roman" size=3 color="#000000">Catatan</font></b></td>
             </tr>
+             @foreach ($jakpus as $row)
             <tr>
-                <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="21" align="center" valign=middle><font face="Times New Roman" color="#000000">AJB</font></td>
-                <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle><font face="Times New Roman" color="#000000">Rumah Tinggal</font></td>
-                <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle><font face="Times New Roman" color="#000000">Jl. Intan Raya No.34, Kel. Sumur Batu, Kec. Kemayoran, Jakarta Pusat</font></td>
-                <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle><font face="Times New Roman" color="#000000">549 m2</font></td>
-                <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle><font face="Times New Roman" color="#000000">880 m2</font></td>
-                <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle><font face="Times New Roman" color="#000000">SHM</font></td>
-                <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle><font face="Times New Roman" color="#000000">11.459.600.000,-</font></td>
-                <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle><u><font face="Times New Roman" color="#0000FF"><a href="https://drive.google.com/file/d/17SIvoQUDE_9JrzbturdTw_QHXBwUp45l/view?usp=share_link">https://drive.google.com/file/d/17SIvoQUDE_9JrzbturdTw_QHXBwUp45l/view?usp=share_link</a></font></u></td>
-                <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle><font face="Times New Roman" color="#000000">-</font></td>
+                <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="21" align="center" valign=middle><font face="Times New Roman" color="#000000">{{ $row->ket }}</font></td>
+                <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle><font face="Times New Roman" color="#000000">{{ $row->jenis_property }}</font></td>
+                <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle><font face="Times New Roman" color="#000000">{{ $row->alamat }}</font></td>
+                <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle><font face="Times New Roman" color="#000000">{{ $row->luas_tanah }} </font></td>
+                <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle><font face="Times New Roman" color="#000000">{{ $row->luas_bangunan }} </font></td>
+                <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle><font face="Times New Roman" color="#000000">{{ $row->sertifikat }}</font></td>
+                <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle><font face="Times New Roman" color="#000000">{{ $row->harga }}</font></td>
+                <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle><u><font face="Times New Roman" color="#0000FF"><a href="https://drive.google.com/file/d/17SIvoQUDE_9JrzbturdTw_QHXBwUp45l/view?usp=share_link">{{ $row->link_foto }}</a></font></u></td>
+                <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle><u><font face="Times New Roman" color="#0000FF"><a href="https://drive.google.com/file/d/17SIvoQUDE_9JrzbturdTw_QHXBwUp45l/view?usp=share_link">{{ $row->link_maps }}</a></font></u> </td>
+                <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle><font face="Times New Roman" color="#000000">{{ $row->catatan }}</font></td>
+            @endforeach
             </tr>
-            <tr>
-                <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="21" align="center" valign=middle><font face="Times New Roman" color="#000000">AJB</font></td>
-                <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle><font face="Times New Roman" color="#000000">Rumah Tinggal</font></td>
-                <td align="center" valign=middle bgcolor="#FFFFFF"><font face="Times New Roman" color="#000000">Jl. Kramat Lontar Ujung, Blok I No. 32, RT 007, RW 15, (d/h jl. Sentiong), Kel. kramat, Kec. Senen, Kota Jakarta Pusat, DKI Jakarta</font></td>
-                <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle><font face="Times New Roman" color="#000000">215 m2</font></td>
-                <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle><font face="Times New Roman" color="#000000">520 m2</font></td>
-                <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle><font face="Times New Roman" color="#000000">SHM</font></td>
-                <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle><font face="Times New Roman" color="#000000">4.875.000.000,-</font></td>
-                <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle><u><font face="Times New Roman" color="#0000FF"><a href="https://drive.google.com/file/d/1nuSh2B_rjV1-Fgxlrs1yqbvkyMrhjn5-/view?usp=share_link">https://drive.google.com/file/d/1nuSh2B_rjV1-Fgxlrs1yqbvkyMrhjn5-/view?usp=share_link</a></font></u></td>
-                <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle><font face="Times New Roman" color="#000000">-</font></td>
-            </tr>
+            
         </table>
       </div>
     </div>

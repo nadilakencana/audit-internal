@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Jakarta;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Jakpus;
+use App\Models\Jaktim;
+use App\Models\Jakut;
+use App\Models\jaksel;
 
 class JakpusController extends Controller
 {
@@ -14,48 +18,49 @@ class JakpusController extends Controller
 
     public function jakpus()
     {
-        return view('datatable.jakarta.jakpus');
+        $jakpus = Jakpus::all();
+        return view('datatable.jakarta.jakpus', compact('jakpus'));
     }
     public function jakut()
     {
-        return view('datatable.jakarta.jakut');
+        $jakut = Jakut::all();
+        return view('datatable.jakarta.jakut', compact('jakut'));
     }
     public function jaktim()
     {
-        return view('datatable.jakarta.jaktim');
+        $jaktim = Jaktim::all();
+        return view('datatable.jakarta.jaktim', compact('jaktim'));
     }
     public function jaksel()
     {
-        return view('datatable.jakarta.jaksel');
+        $jaksel = Jaksel::all();
+        return view('datatable.jakarta.jaksel', compact('jaksel'));
     }
 
     public function jakpusadmin()
     {
-        return view('backend.jakarta.jakpus.jakpus');
+        $jakpus = Jakpus::all();
+        return view('backend.jakarta.jakpus.jakpus', compact('jakpus'));
     }
 
-    public function tambahdata(){ 
-        return view('acara');
-    }
-    public function tambahacara(Request $request){
+    public function tambahjakpus(Request $request){
         // dd($request->all());
-        $data = Acara::create($request->all());
-        return redirect()->route('acara');
+        $jakpus = Jakpus::create($request->all());
+        return redirect()->route('jakpus-admin');
     }
-    public function tampilacara($id){
-        $data = Acara::find($id);
-        return view('acara.edit', compact('data'));
+    public function tampiljakpus($id){
+        $data = Jakpus::find($id);
+        return view('backend.jakarta.jakpus.editjakpus', compact('data'));
     }
-    public function updateacara(Request $request, $id){
-        $data = Acara::find($id);
+    public function updatejakpus(Request $request, $id){
+        $data = Jakpus::find($id);
         $data->update($request->all());
 
-        return redirect()->route('acara');
+        return redirect()->route('jakpus-admin');
     }
-    public function hapusacara($id){
-        $data = Acara::find($id);
-        dd($data);
+    public function hapusjakpus($id){
+        $data = Jakpus::find($id);
         $data->delete();
-        return redirect()->route('acara');
+        return redirect()->route('jakpus-admin');
     }
 }

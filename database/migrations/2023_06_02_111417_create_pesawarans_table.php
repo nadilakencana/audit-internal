@@ -15,6 +15,16 @@ class CreatePesawaransTable extends Migration
     {
         Schema::create('pesawarans', function (Blueprint $table) {
             $table->id();
+            $table->string('ket');
+            $table->string('jenis_property');
+            $table->string('alamat');
+            $table->string('luas_tanah');
+            $table->string('luas_bangunan');
+            $table->string('sertifikat');
+            $table->biginteger('harga');
+            $table->string('link_foto');
+            $table->string('link_maps');
+            $table->string('catatan');
             $table->timestamps();
         });
     }

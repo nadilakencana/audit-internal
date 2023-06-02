@@ -388,8 +388,6 @@
       }
     }
   </script>
-  
-  <button onclick="checkLogin()">Klik Disini</button>
 
 </body>
 
