@@ -45,7 +45,7 @@
 						Member Register
 					</span>
 
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+					<div class="wrap-input100 validate-input" data-validate = "Valid name is required: ex@abc.xyz">
 						<input class="input100" type="text" name="name" placeholder="Full Name" required>
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
@@ -55,6 +55,14 @@
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
 						<input class="input100" type="text" name="email" placeholder="Email" required>
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Valid number phone is required: ex@abc.xyz">
+						<input class="input100" type="number" name="notel" placeholder="number" required>
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>

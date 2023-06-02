@@ -28,4 +28,34 @@ class JakpusController extends Controller
     {
         return view('datatable.jakarta.jaksel');
     }
+
+    public function jakpusadmin()
+    {
+        return view('backend.jakarta.jakpus.jakpus');
+    }
+
+    public function tambahdata(){ 
+        return view('acara');
+    }
+    public function tambahacara(Request $request){
+        // dd($request->all());
+        $data = Acara::create($request->all());
+        return redirect()->route('acara');
+    }
+    public function tampilacara($id){
+        $data = Acara::find($id);
+        return view('acara.edit', compact('data'));
+    }
+    public function updateacara(Request $request, $id){
+        $data = Acara::find($id);
+        $data->update($request->all());
+
+        return redirect()->route('acara');
+    }
+    public function hapusacara($id){
+        $data = Acara::find($id);
+        dd($data);
+        $data->delete();
+        return redirect()->route('acara');
+    }
 }

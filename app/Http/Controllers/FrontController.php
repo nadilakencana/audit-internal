@@ -32,4 +32,8 @@ class FrontController extends Controller
     public function klinik(){
         return view('frontend.klinik');
     }
+
+    public function dashboard(){
+        return view('dashboard.index');
+    }
 }

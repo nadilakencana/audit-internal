@@ -36,11 +36,6 @@ class AcaraController extends Controller
     }
     public function updateacara(Request $request, $id){
         $data = Acara::find($id);
-        // if($request->hasFile('image')){
-        //     $request->file('image')->move('fotokategori/', $request->file('image')->getClientOriginalName());
-        //     $data->image = $request->file('image')->getClientOriginalName();
-        //     $data->save();
-        // }
         $data->update($request->all());
 
         return redirect()->route('acara');

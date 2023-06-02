@@ -39,11 +39,14 @@ Route::get('/index', function () {
 })->middleware('auth');
  
 // Acara
-Route::get('/acara', [AcaraController::class, 'index'])->name('acara');
-Route::post('/tambahacara', [AcaraController::class, 'tambahacara'])->name('tambahacara');
-Route::get('/tampilacara/{id}', [AcaraController::class, 'tampilacara'])->name('tampilacara');
-Route::post('/updateacara/{id}', [AcaraController::class, 'updateacara'])->name('updateacara');
-Route::get('/hapusacara/{id}', [AcaraController::class, 'hapusacara'])->name('hapusacara');
+// Route::get('/acara', [AcaraController::class, 'index'])->name('acara');
+// Route::post('/tambahacara', [AcaraController::class, 'tambahacara'])->name('tambahacara');
+// Route::get('/tampilacara/{id}', [AcaraController::class, 'tampilacara'])->name('tampilacara');
+// Route::post('/updateacara/{id}', [AcaraController::class, 'updateacara'])->name('updateacara');
+// Route::get('/hapusacara/{id}', [AcaraController::class, 'hapusacara'])->name('hapusacara');
+
+Route::get('/dashboard-admin', [FrontController::class, 'dashboard'])->name('dashboard-admin');
+Route::get('/jakpus-admin', [JakpusController::class, 'jakpusadmin'])->name('jakpus-admin');
 
 // dataTable 
 Route::get('/datatable', [JakpusController::class, 'index'])->name('datatable')->middleware('auth');

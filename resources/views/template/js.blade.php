@@ -1,43 +1,25 @@
-      <script src="{{ asset ("template1/plugins/jquery/jquery.min.js") }}"></script>
+      <script src="{{ asset('assets/dashboard-admin/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/dashboard-admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
-      <!-- Bootstrap Core Js -->
-      <script src="{{ asset ("template1/plugins/bootstrap/js/bootstrap.js") }}"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="{{ asset('assets/dashboard-admin/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
-      <!-- Select Plugin Js -->
-      <script src="{{ asset ("template1/plugins/bootstrap-select/js/bootstrap-select.js") }}"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="{{ asset('assets/dashboard-admin/js/sb-admin-2.min.js') }}"></script>
 
-      <!-- Slimscroll Plugin Js -->
-      <script src="{{ asset ("template1/plugins/jquery-slimscroll/jquery.slimscroll.js") }}"></script>
+    <!-- Page level plugins -->
+    <script src="{{ asset('assets/dashboard-admin/vendor/chart.js/Chart.min.js') }}"></script>
 
-      <!-- Waves Effect Plugin Js -->
-      <script src="{{ asset ("template1/plugins/node-waves/waves.js") }}"></script>
+    <!-- Page level custom scripts -->
+    <script src="{{ asset('assets/dashboard-admin/js/demo/chart-area-demo.js') }}"></script>
+    <script src="{{ asset('assets/dashboard-admin/js/demo/chart-pie-demo.js') }}"></script>
 
-      <!-- Jquery CountTo Plugin Js -->
-      <script src="{{ asset ("template1/plugins/jquery-countto/jquery.countTo.js") }}"></script>
+        <!-- Page level plugins -->
+    <script src="{{ asset('assets/dashboard-admin/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/dashboard-admin/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
 
-      <!-- Morris Plugin Js -->
-      <script src="{{ asset ("template1/plugins/raphael/raphael.min.js") }}"></script>
-      <script src="{{ asset ("template1/plugins/morrisjs/morris.js") }}"></script>
-
-      <!-- ChartJs -->
-      <script src="{{ asset ("template1/plugins/chartjs/Chart.bundle.js") }}"></script>
-
-      <!-- Flot Charts Plugin Js -->
-      <script src="{{ asset ("template1/plugins/flot-charts/jquery.flot.resize.js") }}"></script>
-      <script src="{{ asset ("template1/plugins/flot-charts/jquery.flot.js") }}"></script>
-      <script src="{{ asset ("template1/plugins/flot-charts/jquery.flot.pie.js") }}"></script>
-      <script src="{{ asset ("template1/plugins/flot-charts/jquery.flot.categories.js") }}"></script>
-      <script src="{{ asset ("template1/plugins/flot-charts/jquery.flot.time.js") }}"></script>
-
-      <!-- Sparkline Chart Plugin Js -->
-      <script src="{{ asset ("template1/plugins/jquery-sparkline/jquery.sparkline.js") }}"></script>
-
-      <!-- Custom Js -->
-      <script src="{{ asset ("template1/js/admin.js") }}"></script>
-      <script src="{{ asset ("template1/js/pages/index.js") }}"></script>
-
-      <!-- Demo Js -->
-      <script src="{{ asset ("template1/js/demo.js") }}"></script>
+    <!-- Page level custom scripts -->
+    <script src="{{ asset('assets/dashboard-admin/js/demo/datatables-demo.js') }}"></script>
 
       <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
