@@ -31,17 +31,63 @@
             <!-- Nav Item - Pages Collapse Menu -->
             @section('jakarta')
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#jakarta"
+                    aria-expanded="true" aria-controls="jakarta">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Jakarta</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="jakarta" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="/jakpus-admin">Jakarta Pusat</a>
                         <a class="collapse-item" href="/jaktim-admin">Jakarta Timur</a>
                         <a class="collapse-item" href="/jakut-admin">Jakarta Utara</a>
                         <a class="collapse-item" href="jaksel-admin">Jakarta Selatan</a>
+                    </div>
+                </div>
+            </li>
+            @show
+            @section('tangerang')
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#tangerang"
+                    aria-expanded="true" aria-controls="tangerang">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Tangerang</span>
+                </a>
+                <div id="tangerang" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="/tangerang-admin">Kota Tangerang</a>
+                        <a class="collapse-item" href="/tangkab-admin">Kab Tangerang</a>
+                        <a class="collapse-item" href="/tangsel-admin">Tangerang Selatan</a>
+                    </div>
+                </div>
+            </li>
+            @show
+            @section('bogor')
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#bogor"
+                    aria-expanded="true" aria-controls="bogor">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Bogor</span>
+                </a>
+                <div id="bogor" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="/bogor-admin">Kota Bogor </a>
+                        <a class="collapse-item" href="/kabbogor-admin">Kab Bogor </a>
+                    </div>
+                </div>
+            </li>
+            @show
+            @section('bekasi')
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#bekasi"
+                    aria-expanded="true" aria-controls="bekasi">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Bekasi</span>
+                </a>
+                <div id="bekasi" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="/bekasi-admin">Kota Bekasi </a>
+                        <a class="collapse-item" href="/kabbekasi-admin">Kab Bekasi </a>
                     </div>
                 </div>
             </li>

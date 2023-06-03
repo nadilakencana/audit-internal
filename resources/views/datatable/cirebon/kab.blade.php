@@ -95,7 +95,7 @@
       </div>
       <div class="sale_container">
       <br/>
-<table cellspacing="0" border="0">
+        <table cellspacing="0" border="0">
             <colgroup width="48"></colgroup>
             <colgroup width="89"></colgroup>
             <colgroup width="190"></colgroup>

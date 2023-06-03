@@ -461,6 +461,202 @@
                   });
             });
       </script>
+      <script>
+            $('.hapustangerang').click(function(){
+                  var acara_id = $(this).attr('data-id');
+                  var jenis_property = $(this).attr('data-jenis_property');
+                  swal({
+                  title: "Apa kamu yakin?",
+                  text: "kamu akan menghapus property dengan nama "+jenis_property+" ",
+                  icon: "warning",
+                  buttons: true,
+                  dangerMode: true,
+                  })
+                  .then((willDelete) => {
+                  if (willDelete) {
+                        window.location = "/hapustangerang/"+acara_id+""
+                        swal("property "+jenis_property+" berhasil di hapus", {
+                        icon: "success",
+                        });
+                  } else {
+                        // swal("property "+jenis_property+" gagal di hapus");
+                        swal(
+                              'Oooops!!!',
+                              'property '+jenis_property+' gagal di hapus :)',
+                              'error'
+                        )
+                  }
+                  });
+            });
+      </script>
+      <script>
+            $('.hapustangkab').click(function(){
+                  var acara_id = $(this).attr('data-id');
+                  var jenis_property = $(this).attr('data-jenis_property');
+                  swal({
+                  title: "Apa kamu yakin?",
+                  text: "kamu akan menghapus property dengan nama "+jenis_property+" ",
+                  icon: "warning",
+                  buttons: true,
+                  dangerMode: true,
+                  })
+                  .then((willDelete) => {
+                  if (willDelete) {
+                        window.location = "/hapustangkab/"+acara_id+""
+                        swal("property "+jenis_property+" berhasil di hapus", {
+                        icon: "success",
+                        });
+                  } else {
+                        // swal("property "+jenis_property+" gagal di hapus");
+                        swal(
+                              'Oooops!!!',
+                              'property '+jenis_property+' gagal di hapus :)',
+                              'error'
+                        )
+                  }
+                  });
+            });
+      </script>
+      <script>
+            $('.hapustangsel').click(function(){
+                  var acara_id = $(this).attr('data-id');
+                  var jenis_property = $(this).attr('data-jenis_property');
+                  swal({
+                  title: "Apa kamu yakin?",
+                  text: "kamu akan menghapus property dengan nama "+jenis_property+" ",
+                  icon: "warning",
+                  buttons: true,
+                  dangerMode: true,
+                  })
+                  .then((willDelete) => {
+                  if (willDelete) {
+                        window.location = "/hapustangsel/"+acara_id+""
+                        swal("property "+jenis_property+" berhasil di hapus", {
+                        icon: "success",
+                        });
+                  } else {
+                        // swal("property "+jenis_property+" gagal di hapus");
+                        swal(
+                              'Oooops!!!',
+                              'property '+jenis_property+' gagal di hapus :)',
+                              'error'
+                        )
+                  }
+                  });
+            });
+      </script>
+      <script>
+            $('.hapusbogor').click(function(){
+                  var acara_id = $(this).attr('data-id');
+                  var jenis_property = $(this).attr('data-jenis_property');
+                  swal({
+                  title: "Apa kamu yakin?",
+                  text: "kamu akan menghapus property dengan nama "+jenis_property+" ",
+                  icon: "warning",
+                  buttons: true,
+                  dangerMode: true,
+                  })
+                  .then((willDelete) => {
+                  if (willDelete) {
+                        window.location = "/hapusbogor/"+acara_id+""
+                        swal("property "+jenis_property+" berhasil di hapus", {
+                        icon: "success",
+                        });
+                  } else {
+                        // swal("property "+jenis_property+" gagal di hapus");
+                        swal(
+                              'Oooops!!!',
+                              'property '+jenis_property+' gagal di hapus :)',
+                              'error'
+                        )
+                  }
+                  });
+            });
+      </script>
+      <script>
+            $('.hapuskabbogor').click(function(){
+                  var acara_id = $(this).attr('data-id');
+                  var jenis_property = $(this).attr('data-jenis_property');
+                  swal({
+                  title: "Apa kamu yakin?",
+                  text: "kamu akan menghapus property dengan nama "+jenis_property+" ",
+                  icon: "warning",
+                  buttons: true,
+                  dangerMode: true,
+                  })
+                  .then((willDelete) => {
+                  if (willDelete) {
+                        window.location = "/hapuskabbogor/"+acara_id+""
+                        swal("property "+jenis_property+" berhasil di hapus", {
+                        icon: "success",
+                        });
+                  } else {
+                        // swal("property "+jenis_property+" gagal di hapus");
+                        swal(
+                              'Oooops!!!',
+                              'property '+jenis_property+' gagal di hapus :)',
+                              'error'
+                        )
+                  }
+                  });
+            });
+      </script>
+      <script>
+            $('.bekasi').click(function(){
+                  var acara_id = $(this).attr('data-id');
+                  var jenis_property = $(this).attr('data-jenis_property');
+                  swal({
+                  title: "Apa kamu yakin?",
+                  text: "kamu akan menghapus property dengan nama "+jenis_property+" ",
+                  icon: "warning",
+                  buttons: true,
+                  dangerMode: true,
+                  })
+                  .then((willDelete) => {
+                  if (willDelete) {
+                        window.location = "/bekasi/"+acara_id+""
+                        swal("property "+jenis_property+" berhasil di hapus", {
+                        icon: "success",
+                        });
+                  } else {
+                        // swal("property "+jenis_property+" gagal di hapus");
+                        swal(
+                              'Oooops!!!',
+                              'property '+jenis_property+' gagal di hapus :)',
+                              'error'
+                        )
+                  }
+                  });
+            });
+      </script>
+      <script>
+            $('.hapuskabbekasi').click(function(){
+                  var acara_id = $(this).attr('data-id');
+                  var jenis_property = $(this).attr('data-jenis_property');
+                  swal({
+                  title: "Apa kamu yakin?",
+                  text: "kamu akan menghapus property dengan nama "+jenis_property+" ",
+                  icon: "warning",
+                  buttons: true,
+                  dangerMode: true,
+                  })
+                  .then((willDelete) => {
+                  if (willDelete) {
+                        window.location = "/hapuskabbekasi/"+acara_id+""
+                        swal("property "+jenis_property+" berhasil di hapus", {
+                        icon: "success",
+                        });
+                  } else {
+                        // swal("property "+jenis_property+" gagal di hapus");
+                        swal(
+                              'Oooops!!!',
+                              'property '+jenis_property+' gagal di hapus :)',
+                              'error'
+                        )
+                  }
+                  });
+            });
+      </script>
 
       <script>
             $('.tambah').click(function(){

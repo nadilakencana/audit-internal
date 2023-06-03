@@ -24,6 +24,8 @@
   <link href="{{ asset('assets/property/css/style.css') }}" rel="stylesheet" />
   <!-- responsive style -->
   <link href="{{ asset('assets/property/css/responsive.css') }}" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 
 <body class="sub_page">
@@ -108,6 +110,11 @@
           <a class="nav-link " href="/datatable-jaksel">Jakarta Selatan</a>
         </li>
       </ul>
+      <div class="justify-content-right mb-2" style="margin-left: 84%;">
+        <a href="/export-pdf-jakpus" class="btn btn-outline-danger btn-sm">
+            <i class="fa-sharp fa-solid fa-file-pdf"></i> Export PDF
+        </a>
+      </div>
       <div class="sale_container">
       <br/>
         <table cellspacing="0" border="0">
@@ -117,9 +124,11 @@
             <colgroup span="4" width="93"></colgroup>
             <colgroup width="192"></colgroup>
             <colgroup width="93"></colgroup>
+            
             <tr>
                 <td colspan=12 height="21" align="center" valign=bottom bgcolor="#D5A6BD"><b><font face="Caveat" size=3 color="#000000">JAKARTA PUSAT</font></b></td>
             </tr>
+            
             <tr>
                 <td height="21" align="center" valign=middle><font face="Times New Roman" color="#000000"><br></font></td>
                 <td align="center" valign=middle><font face="Times New Roman" color="#000000"><br></font></td>

@@ -6,9 +6,13 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Jakarta\JakpusController;
 use App\Http\Controllers\Depok\DepokController;
 use App\Http\Controllers\Tangerang\TangerangController;
+use App\Http\Controllers\Tangerang\TangkabController;
+use App\Http\Controllers\Tangerang\TangselController;
 use App\Http\Controllers\Serang\SerangController;
 use App\Http\Controllers\Bogor\BogorController;
+use App\Http\Controllers\Bogor\KabbogorController;
 use App\Http\Controllers\Bekasi\BekasiController;
+use App\Http\Controllers\Bekasi\KabbekasiController;
 use App\Http\Controllers\Ponorogo\PonorogoController;
 use App\Http\Controllers\Sidoarjo\SidoarjoController;
 use App\Http\Controllers\Surabaya\SurabayaController;
@@ -20,6 +24,7 @@ use App\Http\Controllers\Bandung\BandungController;
 use App\Http\Controllers\Jakarta\JaktimController;
 use App\Http\Controllers\Jakarta\JakutController;
 use App\Http\Controllers\Jakarta\JakselController;
+use App\Http\Controllers\PDFController;
 
 
 /*
@@ -40,6 +45,12 @@ Route::get('/index', function () {
     return view('index');
 })->middleware('auth');
  
+/*                                              Export PDF                                       */
+
+Route::get('/export-pdf-jakpus', [JakpusController::class, 'exportpdfjakpus'])->name('export-pdf-jakpus');
+
+/*                                             end Export PDF                                       */
+
 /*                                              backend                                       */
 
 Route::get('/dashboard-admin', [FrontController::class, 'dashboard'])->name('dashboard-admin');
@@ -141,6 +152,55 @@ Route::get('/tampilbandung/{id}', [BandungController::class, 'tampilbandung'])->
 Route::post('/updatebandung/{id}', [BandungController::class, 'updatebandung'])->name('updatebandung');
 Route::get('/hapusbandung/{id}', [BandungController::class, 'hapusbandung'])->name('hapusbandung');
 
+// tangerang 
+Route::get('/tangerang-admin', [TangerangController::class, 'tangerangadmin'])->name('tangerang-admin')->middleware('auth');
+Route::post('/tambahtangerang', [TangerangController::class, 'tambahtangerang'])->name('tambahtangerang');
+Route::get('/tampiltangerang/{id}', [TangerangController::class, 'tampiltangerang'])->name('tampiltangerang');
+Route::post('/updatetangerang/{id}', [TangerangController::class, 'updatetangerang'])->name('updatetangerang');
+Route::get('/hapustangerang/{id}', [TangerangController::class, 'hapustangerang'])->name('hapustangerang');
+
+// tangkab 
+Route::get('/tangkab-admin', [TangkabController::class, 'tangkabadmin'])->name('tangkab-admin')->middleware('auth');
+Route::post('/tambahtangkab', [TangkabController::class, 'tambahtangkab'])->name('tambahtangkab');
+Route::get('/tampiltangkab/{id}', [TangkabController::class, 'tampiltangkab'])->name('tampiltangkab');
+Route::post('/updatetangkab/{id}', [TangkabController::class, 'updatetangkab'])->name('updatetangkab');
+Route::get('/hapustangkab/{id}', [TangkabController::class, 'hapustangkab'])->name('hapustangkab');
+
+// tangsel 
+Route::get('/tangsel-admin', [TangselController::class, 'tangseladmin'])->name('tangsel-admin')->middleware('auth');
+Route::post('/tambahtangsel', [TangselController::class, 'tambahtangsel'])->name('tambahtangsel');
+Route::get('/tampiltangsel/{id}', [TangselController::class, 'tampiltangsel'])->name('tampiltangsel');
+Route::post('/updatetangsel/{id}', [TangselController::class, 'updatetangsel'])->name('updatetangsel');
+Route::get('/hapustangsel/{id}', [TangselController::class, 'hapustangsel'])->name('hapustangsel');
+
+// bogor 
+Route::get('/bogor-admin', [BogorController::class, 'bogoradmin'])->name('bogor-admin')->middleware('auth');
+Route::post('/tambahbogor', [BogorController::class, 'tambahbogor'])->name('tambahbogor');
+Route::get('/tampilbogor/{id}', [BogorController::class, 'tampilbogor'])->name('tampilbogor');
+Route::post('/updatebogor/{id}', [BogorController::class, 'updatebogor'])->name('updatebogor');
+Route::get('/hapusbogor/{id}', [BogorController::class, 'hapusbogor'])->name('hapusbogor');
+
+// kabbogor 
+Route::get('/kabbogor-admin', [KabbogorController::class, 'kabbogoradmin'])->name('kabbogor-admin')->middleware('auth');
+Route::post('/tambahkabbogor', [KabbogorController::class, 'tambahkabbogor'])->name('tambahkabbogor');
+Route::get('/tampilkabbogor/{id}', [KabbogorController::class, 'tampilkabbogor'])->name('tampilkabbogor');
+Route::post('/updatekabbogor/{id}', [KabbogorController::class, 'updatekabbogor'])->name('updatekabbogor');
+Route::get('/hapuskabbogor/{id}', [KabbogorController::class, 'hapuskabbogor'])->name('hapuskabbogor');
+
+// bekasi 
+Route::get('/bekasi-admin', [BekasiController::class, 'bekasiadmin'])->name('bekasi-admin')->middleware('auth');
+Route::post('/tambahbekasi', [BekasiController::class, 'tambahbekasi'])->name('tambahbekasi');
+Route::get('/tampilbekasi/{id}', [BekasiController::class, 'tampilbekasi'])->name('tampilbekasi');
+Route::post('/updatebekasi/{id}', [BekasiController::class, 'updatebekasi'])->name('updatebekasi');
+Route::get('/hapusbekasi/{id}', [BekasiController::class, 'hapusbekasi'])->name('hapusbekasi');
+
+// kabbekasi 
+Route::get('/kabbekasi-admin', [KabbekasiController::class, 'kabbekasiadmin'])->name('kabbekasi-admin')->middleware('auth');
+Route::post('/tambahkabbekasi', [KabbekasiController::class, 'tambahkabbekasi'])->name('tambahkabbekasi');
+Route::get('/tampilkabbekasi/{id}', [KabbekasiController::class, 'tampilkabbekasi'])->name('tampilkabbekasi');
+Route::post('/updatekabbekasi/{id}', [KabbekasiController::class, 'updatekabbekasi'])->name('updatekabbekasi');
+Route::get('/hapuskabbekasi/{id}', [KabbekasiController::class, 'hapuskabbekasi'])->name('hapuskabbekasi');
+
 /*                                            emd backend                                       */
 
 /*                                            Frontend                                       */
@@ -165,7 +225,7 @@ Route::get('/datatable-serang', [SerangController::class, 'index'])->name('datat
 
 // bogor 
 Route::get('/datatable-bogor', [BogorController::class, 'index'])->name('datatable-bogor')->middleware('auth');
-Route::get('/datatable-kab', [BogorController::class, 'kab'])->name('datatable-kab')->middleware('auth');
+Route::get('/datatable-kabbogor', [BogorController::class, 'kabbogor'])->name('datatable-kabbogor')->middleware('auth');
 
 // bogor 
 Route::get('/datatable-bekasi', [BekasiController::class, 'index'])->name('datatable-bekasi')->middleware('auth');
