@@ -1,7 +1,7 @@
  <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>HIMTI-UMT</title>
+	<title>Property</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -27,7 +27,7 @@
 
 	<style>
 		.login{
-			background-color: orangered;
+			background-color: blue;
 		}
 	</style>
 	
@@ -35,21 +35,33 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
-					<img src="login/images/logo.png" alt="IMG">
+					<img src="assets/property/images/jakarta barat/1.jpeg" alt="IMG">
 					<div class="text-center">
-						<a class="txt2" href="/home">
+						<a class="txt2" href="/">
 							<i class="fa-solid fa-arrow-left-long"></i>
 							Back to home
 						</a>
 					</div>
 				</div>
 
+
 				<form class="login100-form validate-form" action="loginproses" method="post" enctype="multipart/form-data">
 					@csrf
 					<span class="login100-form-title">
-						Member Login
+						User Login
 					</span>
 
+					@if(Session::has('success'))
+						<div class="alert alert-success">
+							{{ Session::get('success') }}
+						</div>
+					@endif
+
+					@if(Session::has('error'))
+						<div class="alert alert-danger">
+							{{ Session::get('error') }}
+						</div>
+					@endif
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
 						<input class="input100" type="text" name="email" placeholder="Email" required>
 						<span class="focus-input100"></span>
@@ -67,20 +79,10 @@
 					</div>
 					
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn login" type="submit">
+						<button class="login100-form-btn" type="submit">
 							Login
 						</button>
 					</div>
-
-					<div class="text-center p-t-12">
-						<span class="txt1">
-							Forgot
-						</span>
-						<a class="txt2" href="#">
-							Username / Password?
-						</a>
-					</div>
-
 					
 					<div class="text-center p-t-136">
 						<a class="txt2" href="/regist">

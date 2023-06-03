@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>HIMTI-UMTL</title>
+	<title>Property</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -28,7 +28,7 @@
 
 	<style>
 		.regist{
-			background-color: orangered;
+			background-color: blue;
 		}
 	</style>
 	
@@ -36,14 +36,25 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
-					<img src="login/images/logo.png" alt="IMG">
+					<img src="assets/property/images/jakarta barat/1.jpeg" alt="IMG">
 				</div>
 
 				<form class="login100-form validate-form" action="tambahuser" method="post" enctype="multipart/form-data">
 					@csrf
 					<span class="login100-form-title">
-						Member Register
+						User Register
 					</span>
+
+					@if ($errors->has('email'))
+						<div class="alert alert-danger">
+							{{ $errors->first('email') }}
+						</div>
+					@endif
+					@if ($errors->has('notel'))
+						<div class="alert alert-danger">
+							{{ $errors->first('notel') }}
+						</div>
+					@endif
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid name is required: ex@abc.xyz">
 						<input class="input100" type="text" name="name" placeholder="Full Name" required>
@@ -54,7 +65,8 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="email" placeholder="Email" required>
+						<input class="input100" type="text" name="email" placeholder="Email">
+
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -78,7 +90,7 @@
 					</div>
 					
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn regist" type="submit">
+						<button class="login100-form-btn" type="submit">
 							Register
 						</button>
 						<a class="txt2 mt-3" href="/log">

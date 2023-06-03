@@ -24,6 +24,7 @@
   <link href="{{ asset('assets/property/css/style.css') }}" rel="stylesheet" />
   <!-- responsive style -->
   <link href="{{ asset('assets/property/css/responsive.css') }}" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body class="sub_page">
@@ -92,6 +93,11 @@
           Kabupaten Sukabumi 
         </h2>
         
+      </div>
+      <div class="justify-content-right mb-2" style="margin-left: 84%;">
+        <a href="/export-pdf-sukabumi" class="btn btn-outline-danger btn-sm">
+            <i class="fa-sharp fa-solid fa-file-pdf"></i> Export PDF
+        </a>
       </div>
       <div class="sale_container">
       <br/>

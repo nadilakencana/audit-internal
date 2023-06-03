@@ -24,7 +24,7 @@ use App\Http\Controllers\Bandung\BandungController;
 use App\Http\Controllers\Jakarta\JaktimController;
 use App\Http\Controllers\Jakarta\JakutController;
 use App\Http\Controllers\Jakarta\JakselController;
-use App\Http\Controllers\PDFController;
+use App\Http\Controllers\ExportPDFController;
 
 
 /*
@@ -47,7 +47,48 @@ Route::get('/index', function () {
  
 /*                                              Export PDF                                       */
 
-Route::get('/export-pdf-jakpus', [JakpusController::class, 'exportpdfjakpus'])->name('export-pdf-jakpus');
+// Jakarta 
+Route::get('/export-pdf-jakpus', [ExportPDFController::class, 'exportpdfjakpus'])->name('export-pdf-jakpus');
+Route::get('/export-pdf-jakut', [ExportPDFController::class, 'exportpdfjakut'])->name('export-pdf-jakut');
+Route::get('/export-pdf-jaktim', [ExportPDFController::class, 'exportpdfjaktim'])->name('export-pdf-jaktim');
+Route::get('/export-pdf-jaksel', [ExportPDFController::class, 'exportpdfjaksel'])->name('export-pdf-jaksel');
+
+// Depok 
+Route::get('/export-pdf-depok', [ExportPDFController::class, 'exportpdfdepok'])->name('export-pdf-depok');
+
+// serang 
+Route::get('/export-pdf-serang', [ExportPDFController::class, 'exportpdfserang'])->name('export-pdf-serang');
+
+// ponorogo 
+Route::get('/export-pdf-ponorogo', [ExportPDFController::class, 'exportpdfponorogo'])->name('export-pdf-ponorogo');
+
+// surabaya 
+Route::get('/export-pdf-surabaya', [ExportPDFController::class, 'exportpdfsurabaya'])->name('export-pdf-surabaya');
+// pesawaran 
+Route::get('/export-pdf-pesawaran', [ExportPDFController::class, 'exportpdfpesawaran'])->name('export-pdf-pesawaran');
+// cirebon 
+Route::get('/export-pdf-cirebon', [ExportPDFController::class, 'exportpdfcirebon'])->name('export-pdf-cirebon');
+// sukabumi 
+Route::get('/export-pdf-sukabumi', [ExportPDFController::class, 'exportpdfsukabumi'])->name('export-pdf-sukabumi');
+// karawang 
+Route::get('/export-pdf-karawang', [ExportPDFController::class, 'exportpdfkarawang'])->name('export-pdf-karawang');
+// bandung 
+Route::get('/export-pdf-bandung', [ExportPDFController::class, 'exportpdfbandung'])->name('export-pdf-bandung');
+// sidoarjo 
+Route::get('/export-pdf-sidoarjo', [ExportPDFController::class, 'exportpdfsidoarjo'])->name('export-pdf-sidoarjo');
+
+// serang 
+Route::get('/export-pdf-tangerang', [ExportPDFController::class, 'exportpdftangerang'])->name('export-pdf-tangerang');
+Route::get('/export-pdf-tangkab', [ExportPDFController::class, 'exportpdftangkab'])->name('export-pdf-tangkab');
+Route::get('/export-pdf-tangsel', [ExportPDFController::class, 'exportpdftangsel'])->name('export-pdf-tangsel');
+
+// bogor 
+Route::get('/export-pdf-bogor', [ExportPDFController::class, 'exportpdfbogor'])->name('export-pdf-bogor');
+Route::get('/export-pdf-kabbogor', [ExportPDFController::class, 'exportpdfkabbogor'])->name('export-pdf-kabbogor');
+
+// bekasi 
+Route::get('/export-pdf-bekasi', [ExportPDFController::class, 'exportpdfbekasi'])->name('export-pdf-bekasi');
+Route::get('/export-pdf-kabbekasi', [ExportPDFController::class, 'exportpdfkabbekasi'])->name('export-pdf-kabbekasi');
 
 /*                                             end Export PDF                                       */
 

@@ -10,9 +10,10 @@
 @endsection
 
 @section('content')
+<h3 class="m-2 font-weight-bold">DataTables Karawang</h3>
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+            {{-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> --}}
             <div class="justify-content-right" style="">
                 <button data-toggle="modal" data-target="#tambah" class="btn btn-success xs btn-flat"><i class="fa fa-plus-circle"></i> Tambah</button>                         
             </div>

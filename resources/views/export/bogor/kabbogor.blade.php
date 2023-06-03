@@ -14,18 +14,6 @@
 
   <title>Teaser</title>
 
-
-  <!-- bootstrap core css -->
-  <link rel="stylesheet" type="text/css" href="{{ asset('assets/property/css/bootstrap.css') }}" />
-
-  <!-- fonts style -->
-  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Raleway:400,700&display=swap" rel="stylesheet">
-  <!-- Custom styles for this template -->
-  <link href="{{ asset('assets/property/css/style.css') }}" rel="stylesheet" />
-  <!-- responsive style -->
-  <link href="{{ asset('assets/property/css/responsive.css') }}" rel="stylesheet" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
 </head>
 
 <body class="sub_page">
@@ -33,8 +21,8 @@
   <section class="sale_section layout_padding">
     <div class="container-fluid">
       <div class="heading_container">
-        <h2>
-          jakarta 
+        <h2 style="text-align: center;">
+          Kab Bogor
         </h2>
         
       </div>
@@ -49,7 +37,7 @@
             <colgroup width="93"></colgroup>
             
             <tr>
-                <td colspan=12 height="21" align="center" valign=bottom bgcolor="#D5A6BD"><b><font face="Caveat" size=3 color="#000000">JAKARTA PUSAT</font></b></td>
+                <td colspan=12 height="21" align="center" valign=bottom bgcolor="#D5A6BD"><b><font face="Caveat" size=3 color="#000000">Kab Bogor</font></b></td>
             </tr>
             
             <tr>
@@ -76,7 +64,7 @@
                 <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle bgcolor="#D9D2E9"><b><font face="Times New Roman" size=3 color="#000000">Link maps</font></b></td>
                 <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle bgcolor="#D9D2E9"><b><font face="Times New Roman" size=3 color="#000000">Catatan</font></b></td>
             </tr>
-             @foreach ($jakpus as $row)
+             @foreach ($kabbogor as $row)
             <tr>
                 <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="21" align="center" valign=middle><font face="Times New Roman" color="#000000">{{ $row->ket }}</font></td>
                 <td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="center" valign=middle><font face="Times New Roman" color="#000000">{{ $row->jenis_property }}</font></td>
@@ -95,29 +83,6 @@
       </div>
     </div>
   </section>
-
-  <!-- end sale section -->
-
-
-
-  <!-- info section -->
-  
-
-  <!-- end info_section -->
-
-
-  <!-- footer section -->
-  <section class="container-fluid footer_section ">
-    <div class="container">
-      
-    </div>
-  </section>
-  <!-- end  footer section -->
-
-
-  <script type="text/javascript" src="{{ asset('assets/property/js/jquery-3.4.1.min.js') }}"></script>
-  <script type="text/javascript" src="{{ asset('assets/property/js/bootstrap.js') }}"></script>
-  <script type="text/javascript" src="{{ asset('assets/property/js/custom.js') }}"></script>
 
 </body>
 </body>

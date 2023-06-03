@@ -51,7 +51,6 @@
             <div id="myNav" class="overlay">
               <div class="overlay-content">
                 <a class="nav-link active overlay-content text-white-50" href="/">Home</a>
-                <a class="nav-link active overlay-content text-white-50" href="/loginadmin">Login admin</a>
                 <a class="nav-link active overlay-content text-white-50" href="/logout">logout</a>
               </div>
             </div>
