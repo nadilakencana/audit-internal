@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Jaksel;
 
+use PDF;
+
 class JakselController extends Controller
 {
     public function jakseladmin()
@@ -33,5 +35,14 @@ class JakselController extends Controller
         $data = Jaksel::find($id);
         $data->delete();
         return redirect()->route('jaksel-admin');
+    }
+
+    public function exportpdfjaksel($id)
+    {
+        $data = Jaksel::find($id);
+
+        view()->share('data', $data);
+        $pdf = PDF::loadview('export.jakarta.jaksel_id');
+        return $pdf->download('Hasil export jaksel.pdf');
     }
 }

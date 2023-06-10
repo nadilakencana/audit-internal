@@ -12,7 +12,7 @@
 @section('content')
 
 <section class="content">
-    <div class="container-fluid">
+    <div class="sale_container">
         <div class="block-header">
             <h2>Edit Bandung</h2>
         </div>

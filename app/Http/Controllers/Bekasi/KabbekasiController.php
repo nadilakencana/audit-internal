@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Bekasi;
 use App\Models\Kabbekasi;
 
+use PDF;
+
 class KabbekasiController extends Controller
 {
     public function kabbekasiadmin()
@@ -34,5 +36,14 @@ class KabbekasiController extends Controller
         $data = Kabbekasi::find($id);
         $data->delete();
         return redirect()->route('kabbekasi-admin');
+    }
+
+    public function exportpdfkabbekasi($id)
+    {
+        $data = Kabbekasi::find($id);
+
+        view()->share('data', $data);
+        $pdf = PDF::loadview('export.bekasi.kabbekasi_id');
+        return $pdf->download('Hasil export kab bekasi.pdf');
     }
 }

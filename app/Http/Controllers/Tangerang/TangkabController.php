@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Tangkab;
 
+use PDF;
+
 class TangkabController extends Controller
 {
     
@@ -34,5 +36,14 @@ class TangkabController extends Controller
         $data = Tangkab::find($id);
         $data->delete();
         return redirect()->route('tangkab-admin');
+    }
+
+    public function exportpdftangkab($id)
+    {
+        $data = Tangkab::find($id);
+
+        view()->share('data', $data);
+        $pdf = PDF::loadview('export.tangerang.tangkab_id');
+        return $pdf->download('Hasil export kota Tangerang.pdf');
     }
 }

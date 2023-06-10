@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Karawang;
 
+use PDF;
+
 class KarawangController extends Controller
 {
     public function index()
@@ -38,5 +40,14 @@ class KarawangController extends Controller
         $data = Karawang::find($id);
         $data->delete();
         return redirect()->route('karawang-admin');
+    }
+
+    public function exportpdfkarawang($id)
+    {
+        $data = Karawang::find($id);
+
+        view()->share('data', $data);
+        $pdf = PDF::loadview('export.karawang.karawang_id');
+        return $pdf->download('Hasil export karawang.pdf');
     }
 }

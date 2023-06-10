@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Sidoarjo;
 
+use PDF;
+
 class SidoarjoController extends Controller
 {
     public function index()
@@ -38,5 +40,14 @@ class SidoarjoController extends Controller
         $data = Sidoarjo::find($id);
         $data->delete();
         return redirect()->route('sidoarjo-admin');
+    }
+
+    public function exportpdfsidoarjo($id)
+    {
+        $data = Sidoarjo::find($id);
+
+        view()->share('data', $data);
+        $pdf = PDF::loadview('export.sidoarjo.sidoarjo');
+        return $pdf->download('Hasil export sidoarjo.pdf');
     }
 }

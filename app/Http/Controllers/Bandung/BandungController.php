@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Bandung;
 
+use PDF;
+
 class BandungController extends Controller
 {
     public function index()
@@ -38,5 +40,14 @@ class BandungController extends Controller
         $data = Bandung::find($id);
         $data->delete();
         return redirect()->route('bandung-admin');
+    }
+
+    public function exportpdfbandung($id)
+    {
+        $data = Bandung::find($id);
+
+        view()->share('data', $data);
+        $pdf = PDF::loadview('export.bandung.bandung_id');
+        return $pdf->download('Hasil export bandung.pdf');
     }
 }

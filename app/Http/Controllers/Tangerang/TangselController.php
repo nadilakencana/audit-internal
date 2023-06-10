@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Tangsel;
 
+use PDF;
+
 class TangselController extends Controller
 {
     public function tangseladmin()
@@ -33,5 +35,14 @@ class TangselController extends Controller
         $data = Tangsel::find($id);
         $data->delete();
         return redirect()->route('tangsel-admin');
+    }
+
+    public function exportpdftangsel($id)
+    {
+        $data = Tangsel::find($id);
+
+        view()->share('data', $data);
+        $pdf = PDF::loadview('export.tangerang.tangsel_id');
+        return $pdf->download('Hasil export tangsel.pdf');
     }
 }

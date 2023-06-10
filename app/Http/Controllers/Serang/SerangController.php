@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Serang;
 
+use PDF;
+
 class SerangController extends Controller
 {
     public function index(){
@@ -37,5 +39,14 @@ class SerangController extends Controller
         $data = Serang::find($id);
         $data->delete();
         return redirect()->route('serang-admin');
+    }
+
+    public function exportpdfserang($id)
+    {
+        $data = Serang::find($id);
+
+        view()->share('data', $data);
+        $pdf = PDF::loadview('export.serang.serang_id');
+        return $pdf->download('Hasil export serang.pdf');
     }
 }

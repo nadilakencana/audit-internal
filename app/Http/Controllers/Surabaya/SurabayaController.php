@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Surabaya;
 
+use PDF;
+
 class SurabayaController extends Controller
 {
     public function index()
@@ -38,5 +40,14 @@ class SurabayaController extends Controller
         $data = Surabaya::find($id);
         $data->delete();
         return redirect()->route('surabaya-admin');
+    }
+
+    public function exportpdfsurabaya($id)
+    {
+        $data = Surabaya::find($id);
+
+        view()->share('data', $data);
+        $pdf = PDF::loadview('export.surabaya.surabaya_id');
+        return $pdf->download('Hasil export surabaya.pdf');
     }
 }

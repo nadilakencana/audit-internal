@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-  <div class="container-fluid">
+  <div class="sale_container">
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">

@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Middleware;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class LoginController extends Controller{
     public function index(){
@@ -65,11 +67,42 @@ class LoginController extends Controller{
         return view('regist');
     }
 
+    // public function loginproses(Request $request)
+    // {
+    //     if(Auth::attempt($request -> only('email', 'password'))){
+    //         return redirect('/home');
+    //     }
+    //     Session::flash('error', 'Email atau password salah.');
+    //     return redirect('/log');
+    // }
+
     public function loginproses(Request $request)
     {
-        if(Auth::attempt($request -> only('email', 'password'))){
+        if (Auth::attempt($request->only('email', 'password'))) {
+            $user = Auth::user(); // Mendapatkan data user yang sedang login
+    
+            $tables = DB::connection()->getDoctrineSchemaManager()->listTableNames();
+    
+            foreach ($tables as $table) {
+                $columns = DB::getSchemaBuilder()->getColumnListing($table);
+                
+                // Cek apakah tabel memiliki kolom 'link'
+                if (in_array('link', $columns)) {
+                    $links = DB::table($table)->where('user_id', $user->id)->pluck('link');
+    
+                    // Memeriksa apakah ada link dalam tabel yang perlu dicek
+                    if ($links->isNotEmpty()) {
+                        foreach ($links as $link) {
+                            // Mengarahkan pengguna ke link jika sudah login
+                            return Redirect::away($link);
+                        }
+                    }
+                }
+            }
+    
             return redirect('/home');
         }
+    
         Session::flash('error', 'Email atau password salah.');
         return redirect('/log');
     }

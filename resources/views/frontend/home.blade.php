@@ -29,7 +29,7 @@
   <div class="hero_area">
     <!-- header section strats -->
     <header class="header_section">
-      <div class="container-fluid">
+      <div class="sale_container">
         <nav class="navbar navbar-expand-lg custom_nav-container">
           <!-- <a class="navbar-brand" href="index.html"> -->
             <!-- <img src="images/logo.png" alt="" /> -->
@@ -50,7 +50,7 @@
             </div>
             <div id="myNav" class="overlay">
               <div class="overlay-content">
-                <a class="nav-link active overlay-content text-white-50" href="index.html">Home</a>
+                <a class="nav-link active overlay-content text-white-50" href="/">Home</a>
                 <a class="nav-link dropdown-toggle text-white-50" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Lokasi</a>
                 <div class="dropdown-menu overlay-content">
                   <a class="dropdown-item" href="jakarta">Jakarta</a>
@@ -68,7 +68,7 @@
                   <a class="dropdown-item" href="/siduharjo">Siduharjo</a>
                   <a class="dropdown-item" href="/sidoarjo">Cirebon</a>
                 </div>
-                <a class="nav-link active overlay-content text-white-50" href="/logout">logout</a>
+                {{-- <a class="nav-link active overlay-content text-white-50" href="/logout">logout</a> --}}
                 <!-- <a href="about.html">ABOUT</a> -->
                 <!-- <a href="house.html">HOUSE</a> -->
                 <!-- <a href="price.html">PRICING</a> -->
@@ -83,7 +83,7 @@
     <!-- end header section -->
     <!-- slider section -->
     <section class="slider_section ">
-      <div class="container-fluid">
+      <div class="sale_container">
         <div class="row">
           <div class="col-md-4 offset-md-0">
             <div class="detail-box">
@@ -144,12 +144,9 @@
 
   <!-- sale section -->
 
-  <section class="sale_section layout_padding-bottom">
-    <div class="container-fluid">
+  {{-- <section class="sale_section layout_padding-bottom">
+    <div class="sale_container">
       <div class="heading_container">
-        <h2>
-          Properti For Sale
-        </h2>
         <p>
           "Properti Komersial Strategis untuk Bisnis yang Sukses"
         </p>
@@ -283,7 +280,7 @@
   <!-- client secction -->
 
   <section class="client_section layout_padding">
-    <div class="container-fluid">
+    <div class="sale_container">
       <div class="heading_container">
         <h2>
           What is Says Our Customer
@@ -357,12 +354,12 @@
 
       </div>
     </div>
-  </section>
+  </section> --}}
 
   <!-- end client section -->
 
   <!-- footer section -->
-  <section class="container-fluid footer_section ">
+  <section class="sale_container footer_section ">
     <p>
       &copy; <span id="displayYear"></span> Selamat Datang
     </p>

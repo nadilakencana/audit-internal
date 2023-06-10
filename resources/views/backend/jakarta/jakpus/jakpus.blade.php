@@ -41,6 +41,7 @@
                             <th>link_foto</th>
                             <th>link_maps</th>
                             <th>catatan</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -55,10 +56,12 @@
                             <th>link_foto</th>
                             <th>link_maps</th>
                             <th>catatan</th>
+                            <th>Aksi</th>
                         </tr>
                     </tfoot>
-                        @foreach ($jakpus as $row)
                     <tbody>
+                        @foreach ($jakpus as $row)
+                        <tr>
                             <td>{{ $row->ket }}</td>
                             <td>{{ $row->jenis_property }}</td>
                             <td>{{ $row->alamat }}</td>
@@ -77,9 +80,11 @@
                                     <i class="fa-solid fa-trash-can"></i>
                                 </a>
                             </td>
-                        @endforeach 
+                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
+
                 <div id="tambah" class="modal fade" role="dialog">
                     <div class="modal-dialog">
                         <div class="modal-content">

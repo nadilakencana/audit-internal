@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Cirebon;
 
+use PDF;
+
 class CirebonController extends Controller
 {
     public function index()
@@ -38,5 +40,14 @@ class CirebonController extends Controller
         $data = Cirebon::find($id);
         $data->delete();
         return redirect()->route('cirebon-admin');
+    }
+
+    public function exportpdfcirebon($id)
+    {
+        $data = Cirebon::find($id);
+
+        view()->share('data', $data);
+        $pdf = PDF::loadview('export.cireboon.cirebon_id');
+        return $pdf->download('Hasil export cireboon.pdf');
     }
 }

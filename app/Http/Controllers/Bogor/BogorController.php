@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Bogor;
 use App\Models\Kabbogor;
 
+use PDF;
+
 class BogorController extends Controller
 {
     public function index()
@@ -44,5 +46,14 @@ class BogorController extends Controller
         $data = Bogor::find($id);
         $data->delete();
         return redirect()->route('bogor-admin');
+    }
+
+    public function exportpdfbogor($id)
+    {
+        $data = Bogor::find($id);
+
+        view()->share('data', $data);
+        $pdf = PDF::loadview('export.bogor.bogor_id');
+        return $pdf->download('Hasil export bogor.pdf');
     }
 }

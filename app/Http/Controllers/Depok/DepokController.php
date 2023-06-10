@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Depok;
 
+use PDF;
+
 class DepokController extends Controller
 {
     public function index()
@@ -39,5 +41,14 @@ class DepokController extends Controller
         $data = Depok::find($id);
         $data->delete();
         return redirect()->route('depok-admin');
+    }
+
+    public function exportpdfdepok($id)
+    {
+        $data = Depok::find($id);
+
+        view()->share('data', $data);
+        $pdf = PDF::loadview('export.depok.depok_id');
+        return $pdf->download('Hasil export depok.pdf');
     }
 }

@@ -19,7 +19,7 @@
 <body class="sub_page">
 
   <section class="sale_section layout_padding">
-    <div class="container-fluid">
+    <div class="sale_container">
       <div class="heading_container">
         <h2 style="text-align: center;">
           Kota Surabaya

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Ponorogo;
 
+use PDF;
+
 class PonorogoController extends Controller
 {
     public function index()
@@ -38,5 +40,14 @@ class PonorogoController extends Controller
         $data = Ponorogo::find($id);
         $data->delete();
         return redirect()->route('ponorogo-admin');
+    }
+
+    public function exportpdfponorogo($id)
+    {
+        $data = Ponorogo::find($id);
+
+        view()->share('data', $data);
+        $pdf = PDF::loadview('export.ponorogo.ponorogo_id');
+        return $pdf->download('Hasil export ponorogo.pdf');
     }
 }

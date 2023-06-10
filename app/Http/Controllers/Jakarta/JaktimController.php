@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Jaktim;
 
+use PDF;
+
 class JaktimController extends Controller
 {
     public function jaktimadmin()
@@ -33,5 +35,14 @@ class JaktimController extends Controller
         $data = Jaktim::find($id);
         $data->delete();
         return redirect()->route('jaktim-admin');
+    }
+
+    public function exportpdfjaktim($id)
+    {
+        $data = Jaktim::find($id);
+
+        view()->share('data', $data);
+        $pdf = PDF::loadview('export.jakarta.jaktim_id');
+        return $pdf->download('Hasil export jaktim.pdf');
     }
 }

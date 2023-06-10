@@ -8,6 +8,8 @@ use App\Models\Tangerang;
 use App\Models\Tangkab;
 use App\Models\Tangsel;
 
+use PDF;
+
 class TangerangController extends Controller
 {
     public function index()
@@ -51,5 +53,14 @@ class TangerangController extends Controller
         $data = Tangerang::find($id);
         $data->delete();
         return redirect()->route('tangerang-admin');
+    }
+
+    public function exportpdftangerang($id)
+    {
+        $data = Tangerang::find($id);
+
+        view()->share('data', $data);
+        $pdf = PDF::loadview('export.tangerang.tangerang_id');
+        return $pdf->download('Hasil export kota tangerang.pdf');
     }
 }

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Jakut;
 
+use PDF;
+
 class JakutController extends Controller
 {
     public function jakutadmin()
@@ -33,5 +35,14 @@ class JakutController extends Controller
         $data = Jakut::find($id);
         $data->delete();
         return redirect()->route('jakut-admin');
+    }
+
+    public function exportpdfjakut($id)
+    {
+        $data = Jakut::find($id);
+
+        view()->share('data', $data);
+        $pdf = PDF::loadview('export.jakarta.jakut_id');
+        return $pdf->download('Hasil export jakut.pdf');
     }
 }

@@ -33,7 +33,7 @@
   }
 
   .container,
-  .container-fluid {
+  .sale_container {
     @extend %container-flex-properties;
   }
 
@@ -159,7 +159,7 @@
         }
 
         > .container,
-        > .container-fluid {
+        > .sale_container {
           @extend %container-navbar-expand-#{$breakpoint};
         }
 
@@ -193,7 +193,7 @@
         }
 
         > .container,
-        > .container-fluid {
+        > .sale_container {
           @extend %container-nesting-#{$breakpoint};
         }
 

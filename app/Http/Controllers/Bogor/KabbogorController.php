@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Kabbogor;
 
+use PDF;
+
 class KabbogorController extends Controller
 {
     public function kabbogoradmin()
@@ -33,5 +35,14 @@ class KabbogorController extends Controller
         $data = Kabbogor::find($id);
         $data->delete();
         return redirect()->route('kabbogor-admin');
+    }
+
+    public function exportpdfkabbogor($id)
+    {
+        $data = Kabbogor::find($id);
+
+        view()->share('data', $data);
+        $pdf = PDF::loadview('export.bogor.kabbogor_id');
+        return $pdf->download('Hasil export kab bogor.pdf');
     }
 }

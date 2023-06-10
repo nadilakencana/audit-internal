@@ -32,6 +32,7 @@
                             <th>link_foto</th>
                             <th>link_maps</th>
                             <th>catatan</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -46,6 +47,7 @@
                             <th>link_foto</th>
                             <th>link_maps</th>
                             <th>catatan</th>
+                            <th>Aksi</th>
                         </tr>
                     </tfoot>
                         @foreach ($bandung as $row)

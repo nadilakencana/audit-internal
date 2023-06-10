@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Sukabumi;
 
+use PDF;
+
 class SukabumiController extends Controller
 {
     public function index()
@@ -37,5 +39,14 @@ class SukabumiController extends Controller
         $data = Sukabumi::find($id);
         $data->delete();
         return redirect()->route('sukabumi-admin');
+    }
+
+    public function exportpdfsukabumi($id)
+    {
+        $data = Sukabumi::find($id);
+
+        view()->share('data', $data);
+        $pdf = PDF::loadview('export.sukabumi.sukabumi_id');
+        return $pdf->download('Hasil export sukabumi.pdf');
     }
 }

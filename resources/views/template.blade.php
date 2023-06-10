@@ -31,7 +31,7 @@
                 @include('template.navbar')
 
                 <!-- Begin Page Content -->
-                {{-- <div class="container-fluid">
+                {{-- <div class="sale_container">
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -359,7 +359,7 @@
                     </div>
 
                 </div> --}}
-                <!-- /.container-fluid -->
+                <!-- /.sale_container -->
                 @yield('content')
 
             </div>

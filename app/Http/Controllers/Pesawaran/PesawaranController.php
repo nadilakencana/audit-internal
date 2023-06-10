@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Pesawaran;
 
+use PDF;
+
 class PesawaranController extends Controller
 {
     public function index()
@@ -38,5 +40,14 @@ class PesawaranController extends Controller
         $data = Pesawaran::find($id);
         $data->delete();
         return redirect()->route('pesawaran-admin');
+    }
+
+    public function exportpdfpesawaran($id)
+    {
+        $data = Pesawaran::find($id);
+
+        view()->share('data', $data);
+        $pdf = PDF::loadview('export.pesawaran.pesawaran_id');
+        return $pdf->download('Hasil export pesawaran.pdf');
     }
 }

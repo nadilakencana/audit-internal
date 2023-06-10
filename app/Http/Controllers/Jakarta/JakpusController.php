@@ -9,6 +9,8 @@ use App\Models\Jaktim;
 use App\Models\Jakut;
 use App\Models\jaksel;
 
+use PDF;
+
 class JakpusController extends Controller
 {
     public function index()
@@ -21,22 +23,31 @@ class JakpusController extends Controller
         $jakpus = Jakpus::all();
         return view('datatable.jakarta.jakpus', compact('jakpus'));
     }
+    public function exportpdfjakpus($id)
+    {
+        $data = Jakpus::find($id);
+
+        view()->share('data', $data);
+        $pdf = PDF::loadview('export.jakarta.jakpus_id');
+        return $pdf->download('Hasil export jakpus.pdf');
+    }
     public function jakut()
     {
         $jakut = Jakut::all();
         return view('datatable.jakarta.jakut', compact('jakut'));
     }
+
     public function jaktim()
     {
         $jaktim = Jaktim::all();
         return view('datatable.jakarta.jaktim', compact('jaktim'));
     }
+
     public function jaksel()
     {
         $jaksel = Jaksel::all();
         return view('datatable.jakarta.jaksel', compact('jaksel'));
     }
-
     public function jakpusadmin()
     {
         $jakpus = Jakpus::all();

@@ -185,3 +185,31 @@
     max-width: 1170px;
   }
 }
+
+@media (max-width: 720px) {
+
+  .custom-icon {
+    display: inline-block;
+    margin-right: 5px;
+  }
+
+  .navbar-collapse {
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+
+  .navbar-expand .navbar-collapse,
+  .navbar-expand-sm .navbar-collapse,
+  .navbar-expand-md .navbar-collapse,
+  .navbar-expand-lg .navbar-collapse,
+  .navbar-expand-xl .navbar-collapse {
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -ms-flex-preferred-size: auto;
+    flex-basis: auto;
+  }
+}

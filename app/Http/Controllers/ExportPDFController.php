@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Jakpus;
 use App\Models\Jaktim;
 use App\Models\Jakut;
-use App\Models\jaksel;
+use App\Models\Jaksel;
 use App\Models\Depok;
 use App\Models\Serang;
 use App\Models\Tangerang;

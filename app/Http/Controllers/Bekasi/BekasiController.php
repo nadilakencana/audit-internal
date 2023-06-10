@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Bekasi;
 use App\Models\Kabbekasi;
 
+use PDF;
+
 class BekasiController extends Controller
 {
     public function index()
@@ -44,5 +46,14 @@ class BekasiController extends Controller
         $data = Bekasi::find($id);
         $data->delete();
         return redirect()->route('bekasi-admin');
+    }
+
+    public function exportpdfbekasi($id)
+    {
+        $data = Bekasi::find($id);
+
+        view()->share('data', $data);
+        $pdf = PDF::loadview('export.bekasi.bekasi_id');
+        return $pdf->download('Hasil export bekasi.pdf');
     }
 }

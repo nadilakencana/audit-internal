@@ -29,7 +29,7 @@
   <div class="hero_area">
     <!-- header section strats -->
     <header class="header_section">
-      <div class="container-fluid">
+      <div class="sale_container">
         <nav class="navbar navbar-expand-lg custom_nav-container">
           <!-- <a class="navbar-brand" href="index.html"> -->
             <!-- <img src="images/logo.png" alt="" /> -->
@@ -51,7 +51,24 @@
             <div id="myNav" class="overlay">
               <div class="overlay-content">
                 <a class="nav-link active overlay-content text-white-50" href="/">Home</a>
-                <a class="nav-link active overlay-content text-white-50" href="/logout">logout</a>
+                <a class="nav-link dropdown-toggle text-white-50" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Lokasi</a>
+                <div class="dropdown-menu overlay-content">
+                  <a class="dropdown-item" href="jakarta">Jakarta</a>
+                  <a class="dropdown-item" href="/bogor">Bogor</a>
+                  <a class="dropdown-item" href="/tangerang">Tangerang</a>
+                  <a class="dropdown-item" href="/depok">Depok</a>
+                  <a class="dropdown-item" href="/karawang">Kerawang</a>
+                  <a class="dropdown-item" href="/bandung">Bandung</a>
+                  <a class="dropdown-item" href="/serang">Serang</a>
+                  <a class="dropdown-item" href="/bekasi">Bekasi</a>
+                  <a class="dropdown-item" href="/sukabumi">Sukabumi</a>
+                  <a class="dropdown-item" href="/lampung">Lampung</a>
+                  <a class="dropdown-item" href="/surabaya">Surabaya</a>
+                  <a class="dropdown-item" href="/ponorogo">Ponorogo</a>
+                  <a class="dropdown-item" href="/siduharjo">Siduharjo</a>
+                  <a class="dropdown-item" href="/sidoarjo">Cirebon</a>
+                </div>
+                {{-- <a class="nav-link active overlay-content text-white-50" href="/logout">logout</a> --}}
               </div>
             </div>
           </div>
@@ -61,7 +78,7 @@
     <!-- end header section -->
     <!-- slider section -->
     <section class="slider_section ">
-      <div class="container-fluid">
+      <div class="sale_container">
         <div class="row">
           <div class="col-md-4 offset-md-0">
             <div class="detail-box">
@@ -71,16 +88,16 @@
                 
               </h1>
               <p>"Lingkungan Harmonis! Nikmati Hidup Damai dan Aman di Perumahan Ini"</p>
-              @if (Auth::check())
+              {{-- @if (Auth::check()) --}}
               <div class="btn-box">
                 <a href="/datatable" class="">
                   Information
                 </a>
               </div>
-              @else
+              {{-- @else
             <h5>Anda harus login terlebih dahulu.</h5>
             <p>Silakan <a href="/log">login</a> untuk mengakses halaman ini.</p>
-        @endif
+        @endif --}}
             </div>
           </div>
         </div>
@@ -112,15 +129,15 @@
             <p>
               "Kesempurnaan Terwujud! Temukan Lokasi Ideal untuk Hunian Impian Anda"
             </p>
-          @if (Auth::check())
-            <a href="lokasi.html">
+          {{-- @if (Auth::check()) --}}
+            <a href="/lokasi">
               Read More
             </a>
           </div>
-            @else
+            {{-- @else
             <h5>Anda harus login terlebih dahulu.</h5>
             <p>Silakan <a href="/log">login</a> untuk mengakses halaman ini.</p>
-        @endif
+        @endif --}}
         </div>
       </div>
     </div>
@@ -130,12 +147,9 @@
 
   <!-- sale section -->
 
-  <section class="sale_section layout_padding-bottom">
-    <div class="container-fluid">
+  {{-- <section class="sale_section layout_padding-bottom">
+    <div class="sale_container">
       <div class="heading_container">
-        <h2>
-          Properti For Sale
-        </h2>
         <p>
           "Properti Komersial Strategis untuk Bisnis yang Sukses"
         </p>
@@ -269,7 +283,7 @@
   <!-- client secction -->
 
   <section class="client_section layout_padding">
-    <div class="container-fluid">
+    <div class="sale_container">
       <div class="heading_container">
         <h2>
           What is Says Our Customer
@@ -343,12 +357,12 @@
 
       </div>
     </div>
-  </section>
+  </section> --}}
 
   <!-- end client section -->
 
   <!-- footer section -->
-  <section class="container-fluid footer_section ">
+  <section class="sale_container footer_section ">
     <p>
       &copy; <span id="displayYear"></span> Selamat Datang
     </p>
