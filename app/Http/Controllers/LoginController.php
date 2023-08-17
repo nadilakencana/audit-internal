@@ -12,69 +12,113 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller{
+
     public function index(){
-        return view('log');
+        return view('login');
     }
-    public function user(Request $request){
-        if($request->has('search')){
-            $data = User::where('name', 'LIKE', '%' .$request->search. '%')->paginate(5);
-        }else{
-            $data = User::latest()->paginate(5);
-        }
-        return view('Datauser', compact('data'));
+
+    public function akun()
+    {
+        $akun = DB::table('users')->get();
+        return view('akun.index', compact('akun'));
+    }
+
+    public function create()
+    {
+        return view('akun.create');
     }
     
-    public function tambahuser(Request $request)
+    public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => [
                 'required',
-                Rule::unique('users', 'email')->ignore($request->id)
+                Rule::unique('users', 'email')
             ],
             'notel' => [
                 'required',
-                Rule::unique('users', 'notel')->ignore($request->id)
+                Rule::unique('users', 'notel')
             ],
             'password' => 'required',
+            'level' => 'required',
         ], [
             'email.unique' => 'Email sudah digunakan.',
             'notel.unique' => 'Nomor telepon sudah digunakan.'
         ]);
-    
+
         if ($validator->fails()) {
             return redirect()->back()
                 ->withErrors($validator)
                 ->withInput();
         }
-    
+
         $data = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'notel' => $request->notel,
-            'password' => bcrypt($request->password),
+            'level' => $request->level,
+            'password' => Hash::make($request->password),
             'remember_token' => Str::random(60)
         ]);
-    
-        Session::flash('success', 'Pendaftaran berhasil! Silakan masuk.');
-    
-        return redirect()->route('log');
-    }
-    
-    public function register(){
-        return view('regist');
+
+        Session::flash('success', 'Data User berhasil ditambahkan.');
+
+        return redirect()->route('akun'); // Pastikan route 'log' sesuai dengan yang ada di routes/web.php
     }
 
-    // public function loginproses(Request $request)
-    // {
-    //     if(Auth::attempt($request -> only('email', 'password'))){
-    //         return redirect('/home');
-    //     }
-    //     Session::flash('error', 'Email atau password salah.');
-    //     return redirect('/log');
-    // }
+    public function edit($id)
+    {
+        $akun = User::findOrFail($id);
+
+        return view('akun.edit', compact('akun'));
+    }
+
+    // Fungsi untuk mengupdate data user
+    public function update(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => [
+                'required',
+                Rule::unique('users', 'email')->ignore($id)
+            ],
+            'notel' => [
+                'required',
+                Rule::unique('users', 'notel')->ignore($id)
+            ],
+            'level' => 'required',
+            'password' => 'required',
+        ], [
+            'email.unique' => 'Email sudah digunakan.',
+            'notel.unique' => 'Nomor telepon sudah digunakan.'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        // Update data user
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->notel = $request->notel;
+        $user->level = $request->level;
+        if ($request->password) {
+            $user->password = Hash::make($request->password);
+        }
+        $user->save();
+
+        Session::flash('success', 'Data pengguna berhasil diperbarui.');
+
+        return redirect()->route('akun'); // Ganti 'users.index' dengan route yang sesuai
+    }
 
     public function loginproses(Request $request)
     {
@@ -104,7 +148,7 @@ class LoginController extends Controller{
         }
     
         Session::flash('error', 'Email atau password salah.');
-        return redirect('/log');
+        return redirect('/');
     }
 
     public function logout(){
@@ -112,10 +156,10 @@ class LoginController extends Controller{
         return redirect('/');
     }
     
-    public function hapususer($id){
-        $data = User::find($id);
-        $data->delete();
-        return redirect()->route('datauser');
+    public function destroy($id){
+        $akun = User::find($id);
+        $akun->delete();
+        return redirect()->route('akun');
     }
 }
 
