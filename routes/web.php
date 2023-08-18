@@ -35,6 +35,7 @@ Route::middleware(['auth'])->group(function () {
     
     Route::get('verif-lhps', [Verifikasi_LHPSController::class, 'verif'])->name('verif');
     Route::put('/verifikasi/{id}', [Verifikasi_LHPSController::class, 'update'])->name('verifikasi.update');
+    Route::put('/batalverifikasi/{id}', [Verifikasi_LHPSController::class, 'batal'])->name('verifikasi.batal');
     
     Route::get('download-file/{filename}', [LHPController::class, 'downloadFile'])->name('download.file');
     

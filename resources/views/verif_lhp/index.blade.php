@@ -63,6 +63,14 @@
                                         Verifikasi
                                     </button>
                                 </form>
+                            @elseif ($row->status_verifikasi !== 'sedang dicek')
+                                <form action="{{ route('verifikasi.batal', $row->id) }}" method="POST" style="display: inline;">
+                                    @csrf
+                                    @method('PUT')
+                                    <button type="submit" class="btn btn-warning">
+                                        Batalkan Verifikasi
+                                    </button>
+                                </form>
                             @endif
                         </td>                                                
                     </tr>
@@ -88,7 +96,6 @@
                                             <a href="{{ Storage::url($row->file) }}" target="_blank" class="btn btn-info">Lihat File</a>
                                             <a href="{{ Storage::url($row->file) }}" download class="btn btn-primary">Unduh File</a>
                                         @endif
-
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>

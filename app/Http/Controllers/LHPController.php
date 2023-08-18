@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class LHPController extends Controller
 {  
@@ -27,20 +29,27 @@ class LHPController extends Controller
     public function store(Request $request)
     {
         // Validasi input
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'kategori' => 'required',
-            'kode_lhp' => 'required',
+            'kode_lhp' => [
+                'required',
+                Rule::unique('l_h_p_s', 'kode_lhp'),
+            ],
             'tanggal' => 'required|date',
             'uraian' => 'required',
             'unit' => 'required',
             'file' => 'required|mimes:png,jpg,pdf,doc,docx,xls,xlsx',
         ]);
-
-        // Upload file to the 'datafile_LHP' folder
+    
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator)->with(['error' => 'Kode LHP sudah digunakan.']);
+        }
+    
+        // Upload file to the 'file_LHP' folder in 'public' disk
         $file = $request->file('file');
-        $folderPath = 'datafile_LHP'; // Folder name
-        $filePath = $file->storeAs($folderPath, $file->getClientOriginalName());
-
+        $folderPath = 'file_LHP'; // Folder name
+        $filePath = $file->storeAs($folderPath, $file->getClientOriginalName(), 'public');
+    
         // Simpan data ke database
         LHP::create([
             'kategori' => $request->kategori,
@@ -50,11 +59,10 @@ class LHPController extends Controller
             'unit' => $request->unit,
             'file' => $filePath,
         ]);
-
-        Session::flash('success', 'Data LHP berhasil ditambah.'); // Flash success message
-
+    
+        session()->flash('success', 'Data LHP berhasil ditambah.');
+    
         return redirect()->route('datalhp');
-
     }
 
     public function edit($id)
@@ -66,46 +74,80 @@ class LHPController extends Controller
     public function update(Request $request, $id)
     {
         $lhp = LHP::findOrFail($id);
-        
-        $request->validate([
+    
+        $validator = Validator::make($request->all(), [
             'kategori' => 'required',
-            'kode_lhp' => 'required',
+            'kode_lhp' => [
+                'required',
+                Rule::unique('l_h_p_s', 'kode_lhp')->ignore($lhp->id),
+            ],
             'tanggal' => 'required|date',
             'uraian' => 'required',
             'unit' => 'required',
             'file' => 'nullable|mimes:png,jpg,pdf,doc,docx,xls,xlsx',
         ]);
     
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator)->with(['error' => 'Kode LHP sudah digunakan.']);
+        }
+    
         if ($request->hasFile('file')) {
-            Storage::delete($lhp->file);
+            // Delete existing file
+            Storage::disk('public')->delete($lhp->file);
+    
+            // Upload new file
             $file = $request->file('file');
-            $folderPath = 'datafile_LHP'; // Folder name
-            $filePath = $file->store($folderPath);
+            $folderPath = 'file_LHP'; // Folder name
+            $filePath = $file->storeAs($folderPath, $file->getClientOriginalName(), 'public');
             $lhp->file = $filePath;
         }
     
+        // Update other fields
         $lhp->update($request->only(['kategori', 'kode_lhp', 'tanggal', 'uraian', 'unit']));
     
-        Session::flash('success', 'Data LHP berhasil diedit.'); // Flash success message
-
+        session()->flash('success', 'Data LHP berhasil diedit.');
+    
         return redirect()->route('datalhp');
     }
 
     public function destroy($id)
     {
         $lhp = LHP::findOrFail($id);
-        Storage::delete($lhp->file);
+    
+        // Delete the file from the 'public' disk
+        Storage::disk('public')->delete($lhp->file);
+    
+        // Delete the data from the database
         $lhp->delete();
-
+    
+        session()->flash('success', 'Data LHP berhasil dihapus.');
+    
         return redirect()->route('datalhp');
     }
 
-    public function downloadFile($filename)
-    {
-        $file = Storage::disk('public')->get('datafile_LHP/' . $filename);
-        $fileType = Storage::disk('public')->mimeType('datafile_LHP/' . $filename);
+    // public function download($id)
+    // {
+    //     $file = LHP::findOrFail($id);
+    //     $filePath = $file->file_path;  // Pastikan kolom 'file_path' berisi path yang lengkap
 
-        return response($file)->header('Content-Type', $fileType);
-    }
+    //     // Mendapatkan path lengkap file di dalam direktori publik
+    //     $publicFilePath = public_path($filePath);
+
+    //     // Periksa apakah file ada sebelum diunduh
+    //     if (file_exists($publicFilePath)) {
+    //         return response()->download($publicFilePath);
+    //     } else {
+    //         return back()->with('error', 'File tidak ditemukan.');
+    //     }
+    // }
+
+    // public function review(Request $request, $id)
+    // {
+    //     $file = LHP::findOrFail($id);
+    //     $file->review = $request->input('review');
+    //     $file->save();
+
+    //     return redirect()->route('verif')->with('success', 'Review berhasil ditambahkan.');
+    // }
 
 }

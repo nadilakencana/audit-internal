@@ -32,4 +32,17 @@ class Verifikasi_LHPSController extends Controller
         return redirect()->back()->with('success', 'Status verifikasi berhasil diverifikasi.');
     }
 
+    public function batal(Request $request, $id)
+    {
+        // Temukan data berdasarkan ID
+        $data = LHP::findOrFail($id);
+
+        // Ubah status verifikasi menjadi "sudah oke"
+        $data->update([
+            'status_verifikasi' => 'sedang dicek',
+        ]);
+
+        return redirect()->back()->with('success', 'Status verifikasi berhasil dibatalkan.');
+    }
+
 }

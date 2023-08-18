@@ -2,7 +2,7 @@
 
 @section('lhp')
 <li class="nav-item active">
-    <a class="nav-link" href="datalhp">
+    <a class="nav-link" href="/datalhp">
         <i class="fas fa-fw fa-chart-area"></i>
         <span>LHPS</span>
     </a>
@@ -32,6 +32,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="kode_lhp" class="control-label">kode_lhp</label>
+                                @if(session('error'))
+                                    <div class="alert alert-danger">
+                                        {{ session('error') }}
+                                    </div>
+                                @endif
                                 <input class="form-control" name="kode_lhp" id="kode_lhp" value="{{ $lhp->kode_lhp }}" required>
                             </div>
                             <div class="form-group">
@@ -40,16 +45,20 @@
                             </div>
                             <div class="form-group">
                                 <label for="uraian" class="control-label">uraian</label>
-                                <input type="text" name="uraian" class="form-control" id="uraian" value="{{ $lhp->uraian }}" required>
+                                <textarea name="uraian" class="form-control" id="uraian" required>{{ $lhp->uraian }}</textarea>
                             </div>
                             <div class="form-group">
                                 <label for="unit" class="control-label">unit</label>
                                 <input type="text" name="unit" class="form-control" id="unit" value="{{ $lhp->unit }}" required>
                             </div>
                             <div class="form-group">
-                                <label for="file" class="control-label">file</label>
-                                <input type="file" name="file" class="form-control" id="file" required>
+                                <label for="file" class="control-label">File</label>
+                                <input type="file" name="file" class="form-control mb-3" id="file">
+                                @if ($lhp->file)
+                                    <h6>File saat ini: <a href="{{ asset('storage/' . $lhp->file) }}" class="btn btn-success" target="_blank">{{ basename($lhp->file) }}</a></h6>
+                                @endif
                             </div>
+                                                        
                             <div class="modal-footer">
                                 <button type="reset" class="btn btn-danger">Reset</button>
                                 <button type="submit" class="btn btn-success">Simpan</button>

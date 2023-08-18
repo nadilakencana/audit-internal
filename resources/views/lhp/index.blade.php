@@ -61,11 +61,14 @@
                                 @endif
                             </td>
                             <td>
-                                @if (Auth::user()->level === 'direc')
-                                <button class="btn btn-primary" data-toggle="modal" data-target="#detailModal{{ $row->id }}">
-                                    Detail
-                                </button>
+                                @if (Auth::user()->level === 'direc' || $row->status_verifikasi === 'sudah oke')
+                                    <button class="btn btn-primary" data-toggle="modal" data-target="#detailModal{{ $row->id }}">
+                                        Detail
+                                    </button>
                                 @else
+                                    <button class="btn btn-primary" data-toggle="modal" data-target="#detailModal{{ $row->id }}">
+                                        Detail
+                                    </button>
                                     <a href="/lhp/edit/{{ $row->id }}" class="btn btn-info">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
@@ -97,7 +100,6 @@
                                             <a href="{{ Storage::url($row->file) }}" target="_blank" class="btn btn-info">Lihat File</a>
                                             <a href="{{ Storage::url($row->file) }}" download class="btn btn-primary">Unduh File</a>
                                         @endif
-
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>

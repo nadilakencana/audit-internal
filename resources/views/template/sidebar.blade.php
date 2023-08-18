@@ -36,7 +36,7 @@
             @section('user')
             @if($user->level == 'admin')
                 <li class="nav-item">
-                    <a class="nav-link" href="akun">
+                    <a class="nav-link" href="/akun">
                         <i class="fas fa-fw fa-chart-area"></i>
                         <span>Data User</span>
                     </a>
@@ -56,7 +56,7 @@
             @section('verif')
             @if($user->level == 'admin' || $user->level == 'spi')
                 <li class="nav-item">
-                    <a class="nav-link" href="verif-lhps">
+                    <a class="nav-link" href="/verif-lhps">
                         <i class="fas fa-fw fa-chart-area"></i>
                         <span>Verifikasi LHPS</span>
                     </a>
@@ -65,8 +65,8 @@
             @show
             @section('cetak')
             @if($user->level == 'admin' || $user->level == 'direc')
-                <li class="nav-item">
-                    <a class="nav-link" href="bandung-admin">
+                <li class="nav-item mb-5">
+                    <a class="nav-link" href="/cetak">
                         <i class="fas fa-fw fa-chart-area"></i>
                         <span>Cettak LHPS</span>
                     </a>
@@ -75,7 +75,7 @@
             @show
 
             <li class="nav-item">
-                <a class="nav-link btn btn-danger" href="/logout">
+                <a class="nav-link" href="/logout">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Log Out</span>
                 </a>

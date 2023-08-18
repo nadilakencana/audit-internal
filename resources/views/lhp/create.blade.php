@@ -2,7 +2,7 @@
 
 @section('lhp')
 <li class="nav-item active">
-    <a class="nav-link" href="datalhp">
+    <a class="nav-link" href="/datalhp">
         <i class="fas fa-fw fa-chart-area"></i>
         <span>LHPS</span>
     </a>
@@ -31,6 +31,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="" class="control-label">kode_lhp</label>
+                                    @if(session('error'))
+                                        <div class="alert alert-danger">
+                                            {{ session('error') }}
+                                        </div>
+                                    @endif
                                     <input class="form-control" name="kode_lhp" id="kode_lhp" required>
                                 </div>
                                 <div class="form-group">
@@ -39,7 +44,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="" class="control-label">uraian</label>
-                                    <input type="text" name="uraian" class="form-control" id="uraian" required>
+                                    <textarea type="text" name="uraian" class="form-control" id="uraian" required></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="" class="control-label">unit</label>
