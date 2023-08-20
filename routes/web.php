@@ -47,6 +47,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('akun/destroy/{id}', [LoginController::class, 'destroy'])->name('destroy');
 
     Route::get('datalhp', [LHPController::class, 'index'])->name('datalhp');
+    Route::get('LHP_FIX', [LHPController::class, 'lhp'])->name('lhp');
     Route::get('datalhp/create', [LHPController::class, 'create'])->name('lhp.create');
     Route::post('datalhp/store', [LHPController::class, 'store'])->name('lhp.store');
     Route::get('lhp/edit/{id}', [LHPController::class, 'edit'])->name('lhp.edit');

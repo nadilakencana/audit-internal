@@ -28,7 +28,12 @@
                         <div class="modal-body">
                             <div class="form-group">
                                 <label for="kategori" class="control-label">kategori</label>
-                                <input type="text" name="kategori" class="form-control" id="kategori" value="{{ $lhp->kategori }}" required>
+                                <select name="kategori" class="form-control" id="" value="{{ $lhp->kategori }}" required>
+                                    <option value="">Pilih Kategori</option>
+                                    <option value="keuangan" @if ($lhp->unit == 'keuangan') selected @endif>Divisi Keuangan</option>
+                                    <option value="SDM" @if ($lhp->unit == 'SDM') selected @endif>Divisi SDM</option>
+                                    <option value="tatakelola" @if ($lhp->unit == 'tatakelola') selected @endif>Divisi Tata Kelola</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="kode_lhp" class="control-label">kode_lhp</label>
@@ -49,7 +54,12 @@
                             </div>
                             <div class="form-group">
                                 <label for="unit" class="control-label">unit</label>
-                                <input type="text" name="unit" class="form-control" id="unit" value="{{ $lhp->unit }}" required>
+                                <select name="unit" class="form-control" id="" required>
+                                    <option value="">Pilih Unit Penanggung Jawab</option>
+                                    <option value="keuangan" @if ($lhp->unit == 'keuangan') selected @endif>Divisi Keuangan</option>
+                                    <option value="SDM" @if ($lhp->unit == 'SDM') selected @endif>Divisi SDM</option>
+                                    <option value="tatakelola" @if ($lhp->unit == 'tatakelola') selected @endif>Divisi Tata Kelola</option>
+                                </select>                                
                             </div>
                             <div class="form-group">
                                 <label for="file" class="control-label">File</label>

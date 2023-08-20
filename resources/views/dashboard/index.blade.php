@@ -17,6 +17,11 @@
         {{-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> --}}
     </div>
+    @if(Session::has('success'))
+        <div class="alert alert-success">
+            {{ Session::get('success') }} <span class="badge badge-success">{{ auth()->user()->name }}</span>
+        </div>
+    @endif
 
     <!-- Content Row -->
     <!-- Content Row -->

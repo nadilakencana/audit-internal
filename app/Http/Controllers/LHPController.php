@@ -21,6 +21,12 @@ class LHPController extends Controller
         return view('lhp.index', compact('lhps'));
     }
 
+    public function lhp()
+    {
+        $lhp = DB::table('l_h_p_s')->get();
+        return view('lhp.fix', compact('lhp'));
+    }
+
     public function create()
     {
         return view('lhp.create');

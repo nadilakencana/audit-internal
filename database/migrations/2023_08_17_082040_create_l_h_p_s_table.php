@@ -21,7 +21,7 @@ class CreateLHPSTable extends Migration
             $table->string('uraian');
             $table->string('unit');
             $table->string('file');
-            $table->string('status_verifikasi')->default('Sedang Dicek');
+            $table->string('status_verifikasi')->default('sedang dicek');
             $table->timestamps();
         });
     }

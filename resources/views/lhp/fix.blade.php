@@ -1,31 +1,22 @@
 @extends('template')
 
-@section('lhp')
+@section('lhpfix')
 <li class="nav-item active">
-    <a class="nav-link" href="datalhp">
+    <a class="nav-link" href="/LHP_FIX">
         <i class="fas fa-fw fa-chart-area"></i>
-        <span>LHPS</span>
+        <span>LHP</span>
     </a>
 </li>
 @endsection
 
 @section('content')
-<h3 class="m-2 font-weight-bold">Daftar LHPS</h3>
+<h3 class="m-2 font-weight-bold">Daftar LHP</h3>
     @if(Session::has('success'))
         <div class="alert alert-success">
             {{ Session::get('success') }}
         </div>
     @endif
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            @if (Auth::user()->level === 'direc')
-
-            @else
-                <div class="justify-content-right" style="">
-                    <a href="/datalhp/create" class="btn btn-success"><i class="fa fa-plus-circle"></i> Tambah</a>                         
-                </div>
-            @endif
-        </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -48,8 +39,8 @@
                         </tr>
                     </tfoot>
                     <tbody>
-                        @foreach ($lhps as $row)
-                        @if ($row->status_verifikasi === 'sedang dicek')
+                        @foreach ($lhp as $row)
+                        @if ($row->status_verifikasi === 'sudah oke')
                         <tr>
                             <td>{{ $row->kode_lhp }}</td>
                             <td>{{ $row->tanggal }}</td>
@@ -62,24 +53,11 @@
                                 @endif
                             </td>
                             <td>
-                                @if (Auth::user()->level === 'direc' || $row->status_verifikasi === 'sudah oke')
-                                    <button class="btn btn-primary" data-toggle="modal" data-target="#detailModal{{ $row->id }}">
-                                        Detail
-                                    </button>
-                                @else
-                                    <button class="btn btn-primary" data-toggle="modal" data-target="#detailModal{{ $row->id }}">
-                                        Detail
-                                    </button>
-                                    <a href="/lhp/edit/{{ $row->id }}" class="btn btn-info">
-                                        <i class="fa-solid fa-pen-to-square"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-danger hapuslhp" data-id="{{ $row->id }}" data-kategori="{{ $row->kategori }}">
-                                        <i class="fa-solid fa-trash-can"></i>
-                                    </a>
-                                @endif
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#detailModal{{ $row->id }}">
+                                    Detail
+                                </button>
                             </td>
                         </tr>
-                        @endif
 
                         <div class="modal fade" id="detailModal{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="detailModalLabel{{ $row->id }}" aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -109,6 +87,7 @@
                                 </div>
                             </div>
                         </div>
+                        @endif
                         @endforeach 
                     </tbody>
                 </table>

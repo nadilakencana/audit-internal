@@ -41,10 +41,10 @@
                                 <label for="" class="control-label">level</label>
                                 <select name="level" class="form-control" id="" value="{{ $akun->level }}">
                                     <option value="">Pilih Level</option>
-                                    <option value="admin">Admin</option>
-                                    <option value="audithor">Audithor</option>
-                                    <option value="spi">Kepala SPI</option>
-                                    <option value="direc">Directur Utama</option>
+                                    <option value="admin" @if ($akun->level == 'admin') selected @endif>Admin</option>
+                                    <option value="audithor" @if ($akun->level == 'audithor') selected @endif>Audithor</option>
+                                    <option value="spi" @if ($akun->level == 'spi') selected @endif>Kepala SPI</option>
+                                    <option value="direc" @if ($akun->level == 'direc') selected @endif>Directur Utama</option>
                                 </select>
                             </div>
                             <div class="form-group">

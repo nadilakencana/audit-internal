@@ -27,7 +27,12 @@
                         <div class="modal-body">
                                 <div class="form-group">
                                     <label for="" class="control-label">kategori</label>
-                                    <input type="text" name="kategori" class="form-control" id="kategori" required>
+                                    <select name="kategori" class="form-control" id="" required>
+                                        <option value="">Pilih Kategori</option>
+                                        <option value="keuangan">Divisi Keuangan</option>
+                                        <option value="SDM">Divisi SDM</option>
+                                        <option value="tatakelola">Dividi Tata Kelola</option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="" class="control-label">kode_lhp</label>
@@ -48,7 +53,12 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="" class="control-label">unit</label>
-                                    <input type="text" name="unit" class="form-control" id="unit" required>
+                                    <select name="unit" class="form-control" id="" required>
+                                        <option value="">Pilih Unit Penanggung Jawab</option>
+                                        <option value="keuangan">Divisi Keuangan</option>
+                                        <option value="SDM">Divisi SDM</option>
+                                        <option value="tatakelola">Dividi Tata Kelola</option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="" class="control-label">file</label>

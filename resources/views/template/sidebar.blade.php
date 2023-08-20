@@ -44,11 +44,21 @@
             @endif
             @show
             @section('lhp')
-            @if($user->level == 'admin' || $user->level == 'audithor' || $user->level == 'direc')
+            @if($user->level == 'admin' || $user->level == 'audithor')
                 <li class="nav-item">
                     <a class="nav-link" href="/datalhp">
                         <i class="fas fa-fw fa-chart-area"></i>
                         <span>LHPS</span>
+                    </a>
+                </li>
+            @endif
+            @show
+            @section('lhpfix')
+            @if($user->level == 'admin' || $user->level == 'direc')
+                <li class="nav-item">
+                    <a class="nav-link" href="/LHP_FIX">
+                        <i class="fas fa-fw fa-chart-area"></i>
+                        <span>LHP</span>
                     </a>
                 </li>
             @endif

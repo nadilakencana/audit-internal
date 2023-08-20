@@ -143,7 +143,7 @@ class LoginController extends Controller{
                     }
                 }
             }
-    
+            Session::flash('success', 'Anda berhasil login sebagai ');
             return redirect('/home');
         }
     
