@@ -48,8 +48,8 @@ class LHPController extends Controller
         ]);
 
         $validator->after(function ($validator) {
-            if (strlen(request('uraian')) > 500) { // Ubah nilai 500 sesuai dengan batas karakter
-                $validator->errors()->add('error', 'Uraian maksimal 700 karakter.');
+            if (strlen(request('uraian')) > 700) { // Ubah nilai 500 sesuai dengan batas karakter
+                $validator->errors()->add('uraian', 'Uraian maksimal 700 karakter.');
             }
         });
     
@@ -100,8 +100,8 @@ class LHPController extends Controller
         ]);
 
         $validator->after(function ($validator) {
-            if (strlen(request('uraian')) > 500) { // Ubah nilai 500 sesuai dengan batas karakter
-                $validator->errors()->add('error', 'Uraian maksimal 700 karakter.');
+            if (strlen(request('uraian')) > 700) { // Ubah nilai 500 sesuai dengan batas karakter
+                $validator->errors()->add('uraian', 'Uraian maksimal 700 karakter.');
             }
         });
     
