@@ -49,6 +49,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="" class="control-label">uraian</label>
+                                    @if(session('uraian'))
+                                        <div class="alert alert-danger">
+                                            {{ session('uraian') }}
+                                        </div>
+                                    @endif
                                     <textarea type="text" name="uraian" class="form-control" id="uraian" required></textarea>
                                 </div>
                                 <div class="form-group">

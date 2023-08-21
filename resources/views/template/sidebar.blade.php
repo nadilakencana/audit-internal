@@ -76,9 +76,9 @@
             @section('cetak')
             @if($user->level == 'admin' || $user->level == 'direc')
                 <li class="nav-item mb-5">
-                    <a class="nav-link" href="/cetak">
+                    <a class="nav-link" href="/cetak-LHP">
                         <i class="fas fa-fw fa-chart-area"></i>
-                        <span>Cettak LHPS</span>
+                        <span>Cettak LHP</span>
                     </a>
                 </li>
             @endif

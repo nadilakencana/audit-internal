@@ -35,15 +35,8 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
-					<img src="assets/property/images/jakarta barat/1.jpeg" alt="IMG">
-					<div class="text-center">
-						<a class="txt2" href="/">
-							<i class="fa-solid fa-arrow-left-long"></i>
-							Back to home
-						</a>
-					</div>
+					<img src="assets/dashboard-admin/img/logo.jpeg" alt="IMG">
 				</div>
-
 
 				<form class="login100-form validate-form" action="loginproses" method="post" enctype="multipart/form-data">
 					@csrf
@@ -82,14 +75,6 @@
 						<button class="login100-form-btn" type="submit">
 							Login
 						</button>
-					</div>
-					
-					<div class="text-center p-t-136">
-						<a class="txt2" href="/regist">
-							Create your Account
-							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-						</a>
-						
 					</div>
 				</form>
 			</div>
