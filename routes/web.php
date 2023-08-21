@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LHPController;
+use App\Http\Controllers\CetakLHPController;
 use App\Http\Controllers\Verifikasi_LHPSController;
 use App\Http\Controllers\LoginController;
 
@@ -28,6 +29,8 @@ Route::post('/loginproses', [LoginController::class, 'loginproses'])->name('logi
 Route::post('/tambahuser', [LoginController::class, 'tambahuser'])->name('tambahuser');
 Route::get('/regist', [LoginController::class, 'register'])->name('regist');
 
+Route::get('/cetakLHP/{id}', [CetakLHPController::class, 'CetakLHP'])->name('cetakLHP');
+
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [HomeController::class, 'home'])->name('home');
@@ -38,6 +41,7 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/batalverifikasi/{id}', [Verifikasi_LHPSController::class, 'batal'])->name('verifikasi.batal');
     
     Route::get('download-file/{filename}', [LHPController::class, 'downloadFile'])->name('download.file');
+    Route::get('cetak-LHP', [CetakLHPController::class, 'index'])->name('index');
     
     Route::get('akun', [LoginController::class, 'akun'])->name('akun');
     Route::get('akun/create', [LoginController::class, 'create'])->name('akun.create');

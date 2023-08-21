@@ -50,6 +50,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="uraian" class="control-label">uraian</label>
+                                @if(session('error'))
+                                    <div class="alert alert-danger">
+                                        {{ session('error') }}
+                                    </div>
+                                @endif
                                 <textarea name="uraian" class="form-control" id="uraian" required>{{ $lhp->uraian }}</textarea>
                             </div>
                             <div class="form-group">

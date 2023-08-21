@@ -42,10 +42,16 @@ class LHPController extends Controller
                 Rule::unique('l_h_p_s', 'kode_lhp'),
             ],
             'tanggal' => 'required|date',
-            'uraian' => 'required',
+            'uraian' => 'required|max:700',
             'unit' => 'required',
             'file' => 'required|mimes:png,jpg,pdf,doc,docx,xls,xlsx',
         ]);
+
+        $validator->after(function ($validator) {
+            if (strlen(request('uraian')) > 500) { // Ubah nilai 500 sesuai dengan batas karakter
+                $validator->errors()->add('error', 'Uraian maksimal 700 karakter.');
+            }
+        });
     
         if ($validator->fails()) {
             return redirect()->back()->withInput()->withErrors($validator)->with(['error' => 'Kode LHP sudah digunakan.']);
@@ -88,10 +94,16 @@ class LHPController extends Controller
                 Rule::unique('l_h_p_s', 'kode_lhp')->ignore($lhp->id),
             ],
             'tanggal' => 'required|date',
-            'uraian' => 'required',
+            'uraian' => 'required|max:700',
             'unit' => 'required',
             'file' => 'nullable|mimes:png,jpg,pdf,doc,docx,xls,xlsx',
         ]);
+
+        $validator->after(function ($validator) {
+            if (strlen(request('uraian')) > 500) { // Ubah nilai 500 sesuai dengan batas karakter
+                $validator->errors()->add('error', 'Uraian maksimal 700 karakter.');
+            }
+        });
     
         if ($validator->fails()) {
             return redirect()->back()->withInput()->withErrors($validator)->with(['error' => 'Kode LHP sudah digunakan.']);
