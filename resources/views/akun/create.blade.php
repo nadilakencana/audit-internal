@@ -30,25 +30,36 @@
                                 <input type="text" name="name" class="form-control" id="name" required>
                             </div>
                             <div class="form-group">
-                                <label for="" class="control-label">email</label>
+                                <label for="" class="control-label">Email</label>
                                 <input class="form-control" name="email" id="email" required>
                             </div>
                             <div class="form-group">
-                                <label for="" class="control-label">notel</label>
+                                <label for="" class="control-label">No Telphone</label>
                                 <input type="number" name="notel" class="form-control" id="notel" required>
                             </div>
                             <div class="form-group">
-                                <label for="" class="control-label">level</label>
-                                <select name="level" class="form-control" id="">
-                                    <option value="">Pilih Level</option>
-                                    <option value="admin">Admin</option>
-                                    <option value="audithor">Audithor</option>
-                                    <option value="spi">Kepala SPI</option>
-                                    <option value="direc">Directur Utama</option>
+                                <label for="" class="control-label">Level</label>
+                                <select name="id_level" class="form-control" id="">
+                                    <option value="">--Pilih Level--</option>
+                                    @foreach ($level as $level )
+                                        <option value="{{ $level->id }}">{{ $level->nama }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="" class="control-label">password</label>
+                                <label>Cabang</label>
+                                <select class="custom-select rounded-0" aria-label="Default select example" name="id_cabang" id="exampleSelectRounded0" >
+                                    <option value="">--Pilih Cabang--</option>
+                                    @foreach ( $cabang as $cb )
+                                        <option value="{{ $cb ->id }}">
+                                            {{ $cb  -> nama}}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="" class="control-label">Password</label>
                                 <input type="password" name="password" class="form-control" id="password" required>
                             </div>
                             <div class="modal-footer">

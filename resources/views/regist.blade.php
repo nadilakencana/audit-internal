@@ -4,7 +4,7 @@
 	<title>Property</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
+<!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="{{ asset("login/images/icons/favicon.ico") }}"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{ asset("login/vendor/bootstrap/css/bootstrap.min.css") }}">
@@ -12,7 +12,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset("login/fonts/font-awesome-4.7.0/css/font-awesome.min.css") }}">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{ asset("login/vendor/animate/animate.css") }}">
-<!--===============================================================================================-->	
+<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{ asset("login/vendor/css-hamburgers/hamburgers.min.css") }}">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{ asset("login/vendor/select2/select2.min.css") }}">
@@ -31,7 +31,7 @@
 			background-color: blue;
 		}
 	</style>
-	
+
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
@@ -80,7 +80,7 @@
 							<i class="fa fa-envelope" aria-hidden="true"></i>
 						</span>
 					</div>
-
+					
 					<div class="wrap-input100 validate-input" data-validate = "Password is required">
 						<input class="input100" type="password" name="password" placeholder="Password" required>
 						<span class="focus-input100"></span>
@@ -88,7 +88,7 @@
 							<i class="fa fa-lock" aria-hidden="true"></i>
 						</span>
 					</div>
-					
+
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn" type="submit">
 							Register
@@ -102,11 +102,11 @@
 			</div>
 		</div>
 	</div>
-	
-	
 
-	
-<!--===============================================================================================-->	
+
+
+
+<!--===============================================================================================-->
 	<script src="{{ asset("login/vendor/jquery/jquery-3.2.1.min.js") }}"></script>
 <!--===============================================================================================-->
 	<script src="{{ asset("login/vendor/bootstrap/js/popper.js") }}"></script>
@@ -120,7 +120,7 @@
 			scale: 1.1
 		})
 	</script> --}}
-	
+
 <!--===============================================================================================-->
 	<script src="{{ asset("login/js/main.js") }}"></script>
 	<script>

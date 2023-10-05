@@ -38,26 +38,40 @@
                                 <input type="number" name="notel" class="form-control" id="notel"  value="{{ $akun->notel }}" required>
                             </div>
                             <div class="form-group">
-                                <label for="" class="control-label">level</label>
-                                <select name="level" class="form-control" id="" value="{{ $akun->level }}">
-                                    <option value="">Pilih Level</option>
-                                    <option value="admin" @if ($akun->level == 'admin') selected @endif>Admin</option>
-                                    <option value="audithor" @if ($akun->level == 'audithor') selected @endif>Audithor</option>
-                                    <option value="spi" @if ($akun->level == 'spi') selected @endif>Kepala SPI</option>
-                                    <option value="direc" @if ($akun->level == 'direc') selected @endif>Directur Utama</option>
+                                <label for="" class="control-label">Level</label>
+                                <select name="id_level" class="form-control" id="">
+                                    <option value="{{ $akun->id_level }}">{{ $akun->level->nama }}</option>
+                                    @foreach ($level as $lv )
+                                        <option value="{{ $lv->id }}">{{ $lv->nama }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="" class="control-label">password</label>
-                                <input type="password" name="password" class="form-control" id="password"  value="{{ $akun->password }}" required>
+                                <label>Divisi</label>
+                                <select class="custom-select rounded-0" aria-label="Default select example" name="id_cabang" value="{{ $akun->id_cabang }}" id="exampleSelectRounded0" >
+                                    @if($akun->id_cabang == null)
+                                    <option value="">--Pilih Cabang--</option>
+                                    @else
+                                    <option value="{{ $akun ->id_cabang }}">
+                                            {{ $akun ->cabang->nama}}
+                                    </option>
+                                    <option value="">--Pilih Cabang--</option>
+                                    @endif
+                                    @foreach ( $cabang as $cb )
+                                        <option value="{{ $cb ->id }}">
+                                            {{ $cb  -> nama}}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
+
                             <div class="modal-footer">
                                 <button type="reset" class="btn btn-danger">Reset</button>
                                 <button type="submit" class="btn btn-success">Simpan</button>
                             </div>
                         </div>
                     </form>
-                    
+
                 </div>
             </div>
         </div>

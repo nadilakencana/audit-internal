@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class LHP extends Model
+class DataCabang extends Model
 {
     use HasFactory;
-    protected $table = 'l_h_p_s';
+
+    protected $table = 'data_cabang';
     protected $guarded = [];
 
-    public function temuanAudit (){
-        return $this->hasMany(TemuanAudit::class, 'id_lhps', 'id');
+    public function penugasan(){
+        return $this->hasMany(DataPenugasan::class, 'id_cabang', 'id');
     }
 }

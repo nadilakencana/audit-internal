@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class LHP extends Model
+class BuktiTemuan extends Model
 {
     use HasFactory;
-    protected $table = 'l_h_p_s';
+    protected $table = 'bukti_temuan';
     protected $guarded = [];
 
-    public function temuanAudit (){
-        return $this->hasMany(TemuanAudit::class, 'id_lhps', 'id');
+    public function temuan(){
+        return $this->belongsTo(TemuanAudit::class, 'id_temuan_audit', 'id');
     }
 }

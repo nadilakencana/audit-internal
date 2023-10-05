@@ -10,9 +10,8 @@
 
             <!-- Divider -->
             @php
-            $user = \App\Models\User::where('id', auth()->user()->id)
-            ->first();
-            @endphp          
+            $user = \App\Models\User::where('id', Auth::user()->id)->first();
+            @endphp
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
@@ -34,7 +33,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             @section('user')
-            @if($user->level == 'admin')
+            @if($user->level->nama == 'admin')
                 <li class="nav-item">
                     <a class="nav-link" href="/akun">
                         <i class="fas fa-fw fa-chart-area"></i>
@@ -43,8 +42,48 @@
                 </li>
             @endif
             @show
+            @section('divisi')
+            @if($user->level->nama == 'admin' || $user->level->nama == 'audithor')
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('divisi.index') }}">
+                        <i class="fas fa-fw fa-chart-area"></i>
+                        <span>Divisi</span>
+                    </a>
+                </li>
+            @endif
+            @show
+            @section('jenisPemeriksaan')
+            @if($user->level->nama == 'admin' || $user->level->nama == 'audithor')
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('jenis.index') }}">
+                        <i class="fas fa-fw fa-chart-area"></i>
+                        <span>Jenis Pemeriksaan</span>
+                    </a>
+                </li>
+            @endif
+            @show
+            @section('dataCabang')
+            @if($user->level->nama == 'admin' ||$user->level->nama == 'audithor')
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('cabang.index') }}">
+                        <i class="fas fa-fw fa-chart-area"></i>
+                        <span>Data Cabang</span>
+                    </a>
+                </li>
+            @endif
+            @show
+            @section('penugasan')
+            @if($user->level->nama == 'admin' ||$user->level->nama == 'audithor')
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('penugasan.index') }}">
+                        <i class="fas fa-fw fa-chart-area"></i>
+                        <span>Penugasan Audit</span>
+                    </a>
+                </li>
+            @endif
+            @show
             @section('lhp')
-            @if($user->level == 'admin' || $user->level == 'audithor')
+            @if($user->level->nama == 'admin' || $user->level->nama == 'audithor')
                 <li class="nav-item">
                     <a class="nav-link" href="/datalhp">
                         <i class="fas fa-fw fa-chart-area"></i>
@@ -54,7 +93,7 @@
             @endif
             @show
             @section('lhpfix')
-            @if($user->level == 'admin' || $user->level == 'direc')
+            @if($user->level->nama == 'admin' || $user->level->nama == 'direc')
                 <li class="nav-item">
                     <a class="nav-link" href="/LHP_FIX">
                         <i class="fas fa-fw fa-chart-area"></i>
@@ -64,7 +103,7 @@
             @endif
             @show
             @section('verif')
-            @if($user->level == 'admin' || $user->level == 'spi')
+            @if($user->level->nama == 'admin' || $user->level->nama == 'spi')
                 <li class="nav-item">
                     <a class="nav-link" href="/verif-lhps">
                         <i class="fas fa-fw fa-chart-area"></i>
@@ -74,7 +113,7 @@
             @endif
             @show
             @section('cetak')
-            @if($user->level == 'admin' || $user->level == 'direc')
+            @if($user->level->nama == 'admin' || $user->level->nama == 'direc')
                 <li class="nav-item mb-5">
                     <a class="nav-link" href="/cetak-LHP">
                         <i class="fas fa-fw fa-chart-area"></i>

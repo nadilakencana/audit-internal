@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BuktiTemuan;
+use App\Models\DataCabang;
+use App\Models\DataPenugasan;
 use Illuminate\Http\Request;
 use App\Models\LHP;
+use App\Models\TemuanAudit;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
@@ -13,7 +17,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
 class LHPController extends Controller
-{  
+{
 
     public function index()
     {
@@ -29,117 +33,132 @@ class LHPController extends Controller
 
     public function create()
     {
-        return view('lhp.create');
+        $cabang = DataCabang::all();
+        $penugasan = DataPenugasan::all();
+        return view('lhp.create', compact('cabang', 'penugasan'));
     }
 
     public function store(Request $request)
     {
-        // Validasi input
-        $validator = Validator::make($request->all(), [
-            'kategori' => 'required',
-            'kode_lhp' => [
-                'required',
-                Rule::unique('l_h_p_s', 'kode_lhp'),
-            ],
-            'tanggal' => 'required|date',
-            'uraian' => 'required|max:700',
-            'unit' => 'required',
-            'file' => 'required|mimes:png,jpg,pdf,doc,docx,xls,xlsx',
-        ]);
 
-        $validator->after(function ($validator) {
-            if (strlen(request('uraian')) > 700) { // Ubah nilai 500 sesuai dengan batas karakter
-                $validator->errors()->add('uraian', 'Uraian maksimal 700 karakter.');
-            }
-        });
-    
-        if ($validator->fails()) {
-            return redirect()->back()->withInput()->withErrors($validator)->with(['error' => 'Kode LHP sudah digunakan.']);
-        }
-    
-        // Upload file to the 'file_LHP' folder in 'public' disk
-        $file = $request->file('file');
-        $folderPath = 'file_LHP'; // Folder name
-        $filePath = $file->storeAs($folderPath, $file->getClientOriginalName(), 'public');
-    
-        // Simpan data ke database
-        LHP::create([
-            'kategori' => $request->kategori,
-            'kode_lhp' => $request->kode_lhp,
-            'tanggal' => $request->tanggal,
-            'uraian' => $request->uraian,
-            'unit' => $request->unit,
-            'file' => $filePath,
+        $request->validate([
+            'id_penugasan' => 'required',
+            'id_cabang' => 'required',
+            'tanggal' => 'required',
         ]);
-    
-        session()->flash('success', 'Data LHP berhasil ditambah.');
-    
-        return redirect()->route('datalhp');
+        //dd($request);
+        $lhps = new LHP();
+        $lhps -> id_penugasan = $request->id_penugasan;
+        $lhps -> tanggal = $request->tanggal;
+        $lhps -> id_cabang = $request->id_cabang;
+        $lhps -> status_verifikasi = "Dalam Pemeriksaan";
+
+        // dd($lhps);
+       if($lhps->save()){
+            $temuans = $request->audit;
+            foreach($temuans as $audit){
+                $temuanAudit = new TemuanAudit();
+                $temuanAudit->id_lhps = $lhps->id;
+                $temuanAudit->deskripsi_temuan = $audit['deskripsi_audit'];
+
+
+                if($temuanAudit->save()){
+                    $bukti = $request->buktiTemuan;
+                    $newDir = public_path().'/buktitemuan/'.$temuanAudit->id.'/';
+
+                    if (!file_exists($newDir)) {
+                        mkdir($newDir, 0755, true);
+                    }
+
+                    foreach($bukti as $buktiTemuan){
+                        $bkTemuan = new BuktiTemuan();
+                        $bkTemuan->id_temuan_audit = $temuanAudit->id;
+                        $newUrl = 'http://127.0.0.1:8000/buktitemuan/'.$temuanAudit->id.'/'.$buktiTemuan['file'];
+                        $bkTemuan->bukti_temuan  = $newUrl;
+                        dd($bkTemuan);
+                        $bkTemuan->save();
+
+
+                    }
+
+
+                }
+            }
+            return redirect()->route('')->with('success', 'Data LHPS berhasil di buat');
+       }else{
+            return redirect()->back()->with('faild', 'Data LHPS gagal di buat');
+       }
+
+
     }
 
     public function edit($id)
     {
         $lhp = LHP::findOrFail($id);
-        return view('lhp.edit', compact('lhp'));
+        $cabang = DataCabang::all();
+        $penugasan = DataPenugasan::all();
+        return view('lhp.edit', compact('lhp', 'cabang', 'penugasan'));
     }
 
     public function update(Request $request, $id)
     {
-        $lhp = LHP::findOrFail($id);
-    
-        $validator = Validator::make($request->all(), [
-            'kategori' => 'required',
-            'kode_lhp' => [
-                'required',
-                Rule::unique('l_h_p_s', 'kode_lhp')->ignore($lhp->id),
-            ],
-            'tanggal' => 'required|date',
-            'uraian' => 'required|max:700',
-            'unit' => 'required',
-            'file' => 'nullable|mimes:png,jpg,pdf,doc,docx,xls,xlsx',
+       $request->validate([
+            'id_penugasan' => 'required',
+            'id_cabang' => 'required',
+            'tanggal' => 'required',
         ]);
 
-        $validator->after(function ($validator) {
-            if (strlen(request('uraian')) > 700) { // Ubah nilai 500 sesuai dengan batas karakter
-                $validator->errors()->add('uraian', 'Uraian maksimal 700 karakter.');
+        $lhps = new LHP();
+        $lhps -> id_penugasan = $request->id_penugasan;
+        $lhps -> tanggal = $request->tanggal;
+        $lhps -> id_cabang = $request->id_cabang;
+        $lhps -> status_verifikasi = "Dalam Pemeriksaan";
+
+       if($lhps->save()){
+            $temuan = $request->temuan;
+            foreach($temuan as $audit){
+                $temuanAudit = new TemuanAudit();
+                $temuanAudit->id_lhps = $lhps->id;
+                $temuanAudit->deskripsi_temuan = $audit['deskripsi_audit'];
+
+                if($temuanAudit->save()){
+                    $bukti = $request->buktiTemuan;
+                    $newDir = public_path().'/buktitemuan/'.$temuanAudit->id.'/';
+
+                    if (!file_exists($newDir)) {
+                        mkdir($newDir, 0755, true);
+                    }
+
+                    foreach($bukti as $buktiTemuan){
+                        $bkTemuan = new BuktiTemuan();
+                        $bkTemuan->id_temuan_audit = $temuanAudit->id;
+                        $newUrl = 'http://127.0.0.1:8000/buktitemuan/'.$temuanAudit->id.'/'.$buktiTemuan['file'];
+                        $bkTemuan->bukti_temuan  = $newUrl;
+                        $bkTemuan->save();
+
+                    }
+
+
+                }
             }
-        });
-    
-        if ($validator->fails()) {
-            return redirect()->back()->withInput()->withErrors($validator)->with(['error' => 'Kode LHP sudah digunakan.']);
-        }
-    
-        if ($request->hasFile('file')) {
-            // Delete existing file
-            Storage::disk('public')->delete($lhp->file);
-    
-            // Upload new file
-            $file = $request->file('file');
-            $folderPath = 'file_LHP'; // Folder name
-            $filePath = $file->storeAs($folderPath, $file->getClientOriginalName(), 'public');
-            $lhp->file = $filePath;
-        }
-    
-        // Update other fields
-        $lhp->update($request->only(['kategori', 'kode_lhp', 'tanggal', 'uraian', 'unit']));
-    
-        session()->flash('success', 'Data LHP berhasil diedit.');
-    
-        return redirect()->route('datalhp');
+            return redirect()->route('')->with('success', 'Data LHPS berhasil di buat');
+       }else{
+            return redirect()->back()->with('faild', 'Data LHPS gagal di buat');
+       }
     }
 
     public function destroy($id)
     {
         $lhp = LHP::findOrFail($id);
-    
+
         // Delete the file from the 'public' disk
         Storage::disk('public')->delete($lhp->file);
-    
+
         // Delete the data from the database
         $lhp->delete();
-    
+
         session()->flash('success', 'Data LHP berhasil dihapus.');
-    
+
         return redirect()->route('datalhp');
     }
 

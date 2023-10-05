@@ -13,6 +13,8 @@ use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Hash;
+use App\Models\DataCabang;
+use App\Models\Level;
 
 class LoginController extends Controller{
 
@@ -28,9 +30,11 @@ class LoginController extends Controller{
 
     public function create()
     {
-        return view('akun.create');
+        $cabang = DataCabang::all();
+        $level = Level::all();
+        return view('akun.create',  compact('cabang', 'level'));
     }
-    
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -44,8 +48,10 @@ class LoginController extends Controller{
                 Rule::unique('users', 'notel')
             ],
             'password' => 'required',
-            'level' => 'required',
-        ], [
+            'id_level' => 'required',
+            'id_cabang' => 'required',
+        ],
+        [
             'email.unique' => 'Email sudah digunakan.',
             'notel.unique' => 'Nomor telepon sudah digunakan.'
         ]);
@@ -60,11 +66,12 @@ class LoginController extends Controller{
             'name' => $request->name,
             'email' => $request->email,
             'notel' => $request->notel,
-            'level' => $request->level,
+            'id_level' => $request->id_level,
+            'id_cabang' => $request->id_cabang,
             'password' => Hash::make($request->password),
             'remember_token' => Str::random(60)
         ]);
-
+        $data->save();
         Session::flash('success', 'Data User berhasil ditambahkan.');
 
         return redirect()->route('akun'); // Pastikan route 'log' sesuai dengan yang ada di routes/web.php
@@ -73,8 +80,9 @@ class LoginController extends Controller{
     public function edit($id)
     {
         $akun = User::findOrFail($id);
-
-        return view('akun.edit', compact('akun'));
+        $cabang = DataCabang::all();
+        $level = Level::all();
+        return view('akun.edit', compact('akun', 'cabang', 'level'));
     }
 
     // Fungsi untuk mengupdate data user
@@ -92,9 +100,11 @@ class LoginController extends Controller{
                 'required',
                 Rule::unique('users', 'notel')->ignore($id)
             ],
-            'level' => 'required',
+            'id_level' => 'required',
+            'id_cabang' => 'required',
             'password' => 'required',
-        ], [
+        ],
+        [
             'email.unique' => 'Email sudah digunakan.',
             'notel.unique' => 'Nomor telepon sudah digunakan.'
         ]);
@@ -109,7 +119,8 @@ class LoginController extends Controller{
         $user->name = $request->name;
         $user->email = $request->email;
         $user->notel = $request->notel;
-        $user->level = $request->level;
+        $user->id_level = $request->id_level;
+        $user->id_cabang = $request->id_cabang;
         if ($request->password) {
             $user->password = Hash::make($request->password);
         }
@@ -124,16 +135,16 @@ class LoginController extends Controller{
     {
         if (Auth::attempt($request->only('email', 'password'))) {
             $user = Auth::user(); // Mendapatkan data user yang sedang login
-    
+
             $tables = DB::connection()->getDoctrineSchemaManager()->listTableNames();
-    
+
             foreach ($tables as $table) {
                 $columns = DB::getSchemaBuilder()->getColumnListing($table);
-                
+
                 // Cek apakah tabel memiliki kolom 'link'
                 if (in_array('link', $columns)) {
                     $links = DB::table($table)->where('user_id', $user->id)->pluck('link');
-    
+
                     // Memeriksa apakah ada link dalam tabel yang perlu dicek
                     if ($links->isNotEmpty()) {
                         foreach ($links as $link) {
@@ -146,7 +157,7 @@ class LoginController extends Controller{
             Session::flash('success', 'Anda berhasil login sebagai ');
             return redirect('/home');
         }
-    
+
         Session::flash('error', 'Email atau password salah.');
         return redirect('/');
     }
@@ -155,7 +166,7 @@ class LoginController extends Controller{
         Auth::logout();
         return redirect('/');
     }
-    
+
     public function destroy($id){
         $akun = User::find($id);
         $akun->delete();
@@ -163,6 +174,6 @@ class LoginController extends Controller{
     }
 }
 
-    
+
 
 

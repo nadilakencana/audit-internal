@@ -2,7 +2,7 @@
 
 @section('user')
 <li class="nav-item active">
-    <a class="nav-link" href="akun">
+    <a class="nav-link" href="/akun">
         <i class="fas fa-fw fa-chart-area"></i>
         <span>Data akun</span>
     </a>
@@ -19,7 +19,7 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <div class="justify-content-right" style="">
-                <a href="/akun/create" class="btn btn-success"><i class="fa fa-plus-circle"></i> Tambah</a>                         
+                <a href="/akun/create" class="btn btn-success"><i class="fa fa-plus-circle"></i> Tambah</a>
             </div>
         </div>
         <div class="card-body">
@@ -69,12 +69,12 @@
                                 </a>
                             </td>
                         </tr>
-                        @endforeach 
+                        @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
-        
-    </div>   
-    
+
+    </div>
+
 @endsection

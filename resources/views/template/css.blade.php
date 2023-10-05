@@ -10,6 +10,7 @@ rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
 <!-- Custom styles for this template -->
 <link href="{{ asset('assets/dashboard-admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="{{ asset('assets/dashboard-admin/css/custom.css') }}">
 
 <!-- Custom styles for this page -->
 <link href="{{ asset('assets/dashboard-admin/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">

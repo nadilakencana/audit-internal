@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class LHP extends Model
+class Level extends Model
 {
     use HasFactory;
-    protected $table = 'l_h_p_s';
+    protected $table = 'level';
     protected $guarded = [];
 
-    public function temuanAudit (){
-        return $this->hasMany(TemuanAudit::class, 'id_lhps', 'id');
+    public function user(){
+        return $this->hasMany(User::class, 'id_level', 'id');
     }
+
 }

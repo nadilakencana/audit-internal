@@ -20,7 +20,9 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/js/standalone/selectize.min.js"></script>
+
+
     <script>
         $(document).ready(function() {
             $('#dataTables').DataTable();
@@ -71,6 +73,118 @@
             if (willDelete) {
                   window.location = "/akun/destroy/"+data_id+""
                   swal("Akun "+name+" berhasil di hapus", {
+                  icon: "success",
+                  });
+            } else {
+                  // swal("property "+name+" gagal di hapus");
+                  swal(
+                        'Oooops!!!',
+                        'Akun '+name+' gagal di hapus :)',
+                        'error'
+                  )
+            }
+            });
+      });
+</script>
+<script>
+      $('.divisi').click(function(){
+            var data_id = $(this).attr('data-id');
+            var name = $(this).attr('data-name');
+            swal({
+            title: "Apa kamu yakin?",
+            text: "kamu akan menghapus Akun dengan name "+name+" ",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+            })
+            .then((willDelete) => {
+            if (willDelete) {
+                  window.location = "/divisi/destroy/"+data_id
+                  swal("Data "+name+" berhasil di hapus", {
+                  icon: "success",
+                  });
+            } else {
+                  // swal("property "+name+" gagal di hapus");
+                  swal(
+                        'Oooops!!!',
+                        'Akun '+name+' gagal di hapus :)',
+                        'error'
+                  )
+            }
+            });
+      });
+</script>
+<script>
+      $('.jenis').click(function(){
+            var data_id = $(this).attr('data-id');
+            var name = $(this).attr('data-name');
+            swal({
+            title: "Apa kamu yakin?",
+            text: "kamu akan menghapus Akun dengan name "+name+" ",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+            })
+            .then((willDelete) => {
+            if (willDelete) {
+                  window.location = "/jenis/destroy/"+data_id
+                  swal("Data "+name+" berhasil di hapus", {
+                  icon: "success",
+                  });
+            } else {
+                  // swal("property "+name+" gagal di hapus");
+                  swal(
+                        'Oooops!!!',
+                        'Akun '+name+' gagal di hapus :)',
+                        'error'
+                  )
+            }
+            });
+      });
+</script>
+<script>
+      $('.cabang').click(function(){
+            var data_id = $(this).attr('data-id');
+            var name = $(this).attr('data-name');
+            swal({
+            title: "Apa kamu yakin?",
+            text: "kamu akan menghapus Akun dengan name "+name+" ",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+            })
+            .then((willDelete) => {
+            if (willDelete) {
+                  window.location = "/cabang/destroy/"+data_id
+                  swal("Data "+name+" berhasil di hapus", {
+                  icon: "success",
+                  });
+            } else {
+                  // swal("property "+name+" gagal di hapus");
+                  swal(
+                        'Oooops!!!',
+                        'Akun '+name+' gagal di hapus :)',
+                        'error'
+                  )
+            }
+            });
+      });
+</script>
+<script>
+      $('.penugasan').click(function(){
+            var data_id = $(this).attr('data-id');
+            var name = $(this).attr('data-name');
+            swal({
+            title: "Apa kamu yakin?",
+            text: "kamu akan menghapus Akun dengan name "+name+" ",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+            })
+            .then((willDelete) => {
+            if (willDelete) {
+                  window.location = "/hapus-data/"+data_id
+                  swal("Data "+name+" berhasil di hapus", {
                   icon: "success",
                   });
             } else {

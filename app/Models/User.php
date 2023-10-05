@@ -17,8 +17,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'notel', 'name', 'email', 'password', 'level'
-    ]; 
+        'notel', 'name', 'email', 'password', 'level', 'id_divisi'
+    ];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -37,4 +37,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function cabang(){
+        return $this->belongsTo(DataCabang::class, 'id_cabang', 'id');
+    }
+
+    public function level(){
+        return $this->belongsTo(Level::class, 'id_level','id');
+    }
 }

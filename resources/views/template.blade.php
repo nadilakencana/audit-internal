@@ -10,6 +10,7 @@
     <meta name="author" content="">
 
     <title>Dashboard Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/css/selectize.min.css" />
 
 @include('template.css')
 
@@ -401,7 +402,8 @@
     </div>
 
 @include('template.js')
-
+@yield('script')
 </body>
+
 
 </html>
