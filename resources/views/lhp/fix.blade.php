@@ -22,40 +22,39 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>kode_lhp</th>
+                            <th>Ketua Tugas</th>
                             <th>tanggal</th>
-                            <th>kategori</th>
+                            <th>Cabang Audite</th>
                             <th>Status</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>kode_lhp</th>
+                            <th>Ketua Tugas</th>
                             <th>tanggal</th>
-                            <th>kategori</th>
+                            <th>Cabang Audite</th>
                             <th>Status</th>
                             <th>Aksi</th>
                         </tr>
                     </tfoot>
                     <tbody>
                         @foreach ($lhp as $row)
-                        @if ($row->status_verifikasi === 'sudah oke')
+
                         <tr>
-                            <td>{{ $row->kode_lhp }}</td>
+                            <td>{{ $row->penugasan->user->name }}</td>
                             <td>{{ $row->tanggal }}</td>
-                            <td>{{ $row->kategori }}</td>
+                            <td>{{ $row->cabang->nama }}</td>
                             <td>
-                                @if ($row->status_verifikasi === 'sudah oke')
-                                    <span class="badge badge-success">Sudah Oke</span>
-                                @else
-                                    <span class="badge badge-warning">Sedang Dicek</span>
-                                @endif
+                                {{ $row->status_verifikasi }}
                             </td>
                             <td>
                                 <button class="btn btn-primary" data-toggle="modal" data-target="#detailModal{{ $row->id }}">
                                     Detail
                                 </button>
+                                <a href="/cetakLHP/{{ $row->id }}" class="btn btn-outline-danger btn-sm">
+                                    <i class="fa-sharp fa-solid fa-file-pdf"></i> Cetak LHP
+                                </a>
                             </td>
                         </tr>
 
@@ -70,16 +69,27 @@
                                     </div>
                                     <div class="modal-body">
                                         <!-- Display LHP details here -->
-                                        <p><b>Kategori: </b>{{ $row->kategori }}</p>
-                                        <p><b>Kode LHP: </b>{{ $row->kode_lhp }}</p>
-                                        <p><b>Tanggal: </b>{{ $row->tanggal }}</p>
-                                        <p><b>Uraian: </b>{{ $row->uraian }}</p>
-                                        <p><b>Unit: </b>{{ $row->unit }}</p>
-                                        @if ($row->file)
-                                            <p><b>File: </b>{{ $row->file }}</p>
-                                            <a href="{{ Storage::url($row->file) }}" target="_blank" class="btn btn-info">Lihat File</a>
-                                            <a href="{{ Storage::url($row->file) }}" download class="btn btn-primary">Unduh File</a>
-                                        @endif
+                                        <p><b>Ketua Penugasan : </b>{{ $row->penugasan->user->name }}</p>
+                                        <p><b>Tanggal Audit: </b>{{ $row->tanggal}}</p>
+                                        <p><b>Cabang Audite: </b>{{ $row->cabang->nama }}</p>
+                                        <p><b>Temuan Audit: </b></p>
+                                        @foreach ($row->temuanAudit as $temuan)
+                                            <p>- {{ $temuan->deskripsi_temuan }}</p>
+                                        @endforeach
+                                        <p><b>Bukti Temuan: </b></p>
+                                        @php
+                                            $temuan = 1;
+                                        @endphp
+                                        @foreach ($row->fileTemuan as $file)
+                                            <a href="{{asset('buktitemuan/'.$row->id.'/'.$file->bukti_temuan)}}" target="_blank" class="btn btn-info mb-2">Lihat File Temuan {{ $temuan++ }}</a>
+                                        @endforeach
+                                        <div class="perbaikan mt-3 mb-3">
+                                            @if($row-> status_perbaikan == 'Telah di perbaiki')
+                                                <p><b>Satus: </b>{{ $row->status_perbaikan}}</p>
+                                                <p><b>Tanggal Perbaikan: </b>{{ $row->tanggal_perbaikan}}</p>
+                                                <p><b>Keterangan: </b>{{ $row->keterangan_perbaikan}}</p>
+                                            @endif
+                                        </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
@@ -87,13 +97,13 @@
                                 </div>
                             </div>
                         </div>
-                        @endif
-                        @endforeach 
+
+                        @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
-        
-    </div>   
-    
+
+    </div>
+
 @endsection

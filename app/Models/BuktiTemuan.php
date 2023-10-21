@@ -11,7 +11,7 @@ class BuktiTemuan extends Model
     protected $table = 'bukti_temuan';
     protected $guarded = [];
 
-    public function temuan(){
-        return $this->belongsTo(TemuanAudit::class, 'id_temuan_audit', 'id');
+    public function lhps(){
+        return $this->belongsTo(LHP::class, 'id_lhps', 'id');
     }
 }

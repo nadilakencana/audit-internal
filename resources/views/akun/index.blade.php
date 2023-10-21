@@ -50,15 +50,7 @@
                             <td>{{ $row->email }}</td>
                             <td>{{ $row->notel }}</td>
                             <td>
-                                @if ($row->level === 'admin')
-                                    <span class="badge badge-success">Admin</span>
-                                @elseif ($row->level === 'audithor')
-                                    <span class="badge badge-warning">Auditor</span>
-                                @elseif ($row->level === 'spi')
-                                    <span class="badge badge-primary">Kepala SPI</span>
-                                @elseif ($row->level === 'direc')
-                                    <span class="badge badge-danger">Directur Utama</span>
-                                @endif
+                               {{ $row->level->nama }}
                             </td>
                             <td>
                                 <a href="/akun/edit/{{ $row->id }}" class="btn btn-info">

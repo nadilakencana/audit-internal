@@ -24,7 +24,7 @@ class LoginController extends Controller{
 
     public function akun()
     {
-        $akun = DB::table('users')->get();
+        $akun = User::get();
         return view('akun.index', compact('akun'));
     }
 
@@ -71,6 +71,7 @@ class LoginController extends Controller{
             'password' => Hash::make($request->password),
             'remember_token' => Str::random(60)
         ]);
+        // dd($data);
         $data->save();
         Session::flash('success', 'Data User berhasil ditambahkan.');
 
@@ -102,7 +103,7 @@ class LoginController extends Controller{
             ],
             'id_level' => 'required',
             'id_cabang' => 'required',
-            'password' => 'required',
+            // 'password' => 'required',
         ],
         [
             'email.unique' => 'Email sudah digunakan.',
@@ -121,9 +122,10 @@ class LoginController extends Controller{
         $user->notel = $request->notel;
         $user->id_level = $request->id_level;
         $user->id_cabang = $request->id_cabang;
-        if ($request->password) {
-            $user->password = Hash::make($request->password);
-        }
+        // if ($request->password) {
+        //     $user->password = Hash::make($request->password);
+        // }
+        // dd($user);
         $user->save();
 
         Session::flash('success', 'Data pengguna berhasil diperbarui.');

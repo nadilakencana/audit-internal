@@ -13,15 +13,15 @@ class CetakLHPController extends Controller
 
     public function index()
     {
-        $cetak = DB::table('l_h_p_s')->get();
-        return view('cetaklhp.index', compact('cetak'));
+        $lhp = DB::table('l_h_p_s')->get();
+        return view('cetaklhp.index', compact('lhp'));
     }
 
     public function CetakLHP($id)
     {
-        $cetak = LHP::find($id);
+        $lhp = LHP::find($id);
 
-        view()->share('cetak', $cetak);
+        view()->share('lhp', $lhp);
         $pdf = PDF::loadview('cetaklhppdf.index');
         return $pdf->download('Hasil Cetak LHP.pdf');
     }

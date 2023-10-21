@@ -14,4 +14,15 @@ class LHP extends Model
     public function temuanAudit (){
         return $this->hasMany(TemuanAudit::class, 'id_lhps', 'id');
     }
+    public function fileTemuan (){
+        return $this->hasMany(BuktiTemuan::class, 'id_lhps', 'id');
+    }
+
+    public function Penugasan(){
+        return $this->belongsTo(DataPenugasan::class, 'id_penugasan', 'id');
+    }
+
+    public function cabang(){
+        return $this->belongsTo(DataCabang::class, 'id_cabang', 'id');
+    }
 }

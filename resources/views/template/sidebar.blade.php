@@ -102,26 +102,6 @@
                 </li>
             @endif
             @show
-            @section('verif')
-            @if($user->level->nama == 'admin' || $user->level->nama == 'spi')
-                <li class="nav-item">
-                    <a class="nav-link" href="/verif-lhps">
-                        <i class="fas fa-fw fa-chart-area"></i>
-                        <span>Verifikasi LHPS</span>
-                    </a>
-                </li>
-            @endif
-            @show
-            @section('cetak')
-            @if($user->level->nama == 'admin' || $user->level->nama == 'direc')
-                <li class="nav-item mb-5">
-                    <a class="nav-link" href="/cetak-LHP">
-                        <i class="fas fa-fw fa-chart-area"></i>
-                        <span>Cettak LHP</span>
-                    </a>
-                </li>
-            @endif
-            @show
 
             <li class="nav-item">
                 <a class="nav-link" href="/logout">

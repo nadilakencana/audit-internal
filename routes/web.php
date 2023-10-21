@@ -62,6 +62,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('lhp/edit/{id}', [LHPController::class, 'edit'])->name('lhp.edit');
     Route::post('lhp/update/{id}', [LHPController::class, 'update'])->name('lhp.update');
     Route::get('lhp/destroy/{id}', [LHPController::class, 'destroy'])->name('destroy');
+    Route::post('/approved/{id}', [LHPController::class, 'approveLHP'])->name('approved');
+    Route::post('/perbaikan-audit', [LHPController::class, 'ConfirmPerbaikan'])->name('perbaikan');
+
+
 
     Route::resource('divisi', DivisiController::class);
     Route::get('divisi/destroy/{id}', [DivisiController::class,'destroy'])->name('devisi.destroy');
